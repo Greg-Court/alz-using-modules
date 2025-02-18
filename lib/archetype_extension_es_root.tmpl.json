@@ -1,0 +1,36 @@
+{
+  "extend_es_root": {
+    "policy_assignments": [
+      "Allowed-Locations",
+      "Allowed-RG-Locations",
+      "Inherit-RG-Tags",
+      "Update-VMs-by-Tag",
+      "Win-VM-Eventlogs-DCR",
+      "Linux-VM-Syslogs-DCR"
+    ],
+    "policy_definitions": [
+      "Enforce-RG-Tag",
+      "Enforce-RG-Tag-and-Values",
+      "Enforce-VM-Tag-and-Values",
+      "Enforce-VM-Backup-Custom"
+    ],
+    "policy_set_definitions": [
+      "Enforce-VM-Tags",
+      "Inherit-RG-Tags",
+      "Enforce-RG-Tags",
+      "Update-VMs-by-Tag"
+    ],
+    "role_definitions": [],
+    "archetype_config": {
+      "access_control": {},
+      "parameters": {
+        "Allowed-Locations": {
+          "listOfAllowedLocations": ["northeurope", "westeurope"]
+        },
+        "Allowed-RG-Locations": {
+          "listOfAllowedLocations": ["northeurope", "westeurope"]
+        }
+      }
+    }
+  }
+}

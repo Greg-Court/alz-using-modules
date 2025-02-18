@@ -1,0 +1,28 @@
+{
+  "name": "Win-VM-Eventlogs-DCR",
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2024-04-01",
+  "properties": {
+    "description": "Ensure Windows VMs are configured to send Windows Event Logs to Azure Monitor Log Analytics.",
+    "displayName": "Configure Windows VMs to send Windows Event Logs to Log Analytics",
+    "notScopes": [
+      "/providers/Microsoft.Management/managementGroups/contoso-decommissioned",
+      "/providers/Microsoft.Management/managementGroups/contoso-sandbox"
+    ],
+    "parameters": {
+      "dcrResourceId": {
+        "value": "/subscriptions/6131f1ad-7f3f-4ebe-99f5-3b5960f60424/resourceGroups/rg-mon-mgmt-ne-01/providers/Microsoft.Insights/dataCollectionRules/dcr-winevents-mgmt-ne-01"
+      },
+      "scopeToSupportedImages": {
+        "value": false
+      }
+    },
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/eab1f514-22e3-42e3-9a1f-e1dc9199355c",
+    "scope": "${current_scope_resource_id}",
+    "enforcementMode": null
+  },
+  "location": "${default_location}",
+  "identity": {
+    "type": "SystemAssigned"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "name": "Inherit-RG-Tags",
+  "type": "Microsoft.Authorization/policySetDefinitions",
+  "apiVersion": "2024-04-01",
+  "properties": {
+    "policyType": "Custom",
+    "displayName": "Inherit Resource Group Tags",
+    "description": "Ensure tags are inherited from the resource group to the resources within it if missing.",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "General"
+    },
+    "parameters": {
+      "effect": {
+        "type": "String",
+        "allowedValues": ["Audit", "Deny", "Disabled"],
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        },
+        "defaultValue": "Deny"
+      }
+    },
+    "policyDefinitions": [
+      {
+        "policyDefinitionReferenceId": "Inherit-RG-Tags-BusinessUnit",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ea3f2387-9b95-492a-a190-fcdc54f7b070",
+        "parameters": {
+          "tagName": {
+            "value": "BusinessUnit"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Inherit-RG-Tags-CostCentre",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ea3f2387-9b95-492a-a190-fcdc54f7b070",
+        "parameters": {
+          "tagName": {
+            "value": "CostCentre"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Inherit-RG-Tags-Description",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ea3f2387-9b95-492a-a190-fcdc54f7b070",
+        "parameters": {
+          "tagName": {
+            "value": "Description"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Inherit-RG-Tags-Env",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ea3f2387-9b95-492a-a190-fcdc54f7b070",
+        "parameters": {
+          "tagName": {
+            "value": "Env"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Inherit-RG-Tags-Owner",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ea3f2387-9b95-492a-a190-fcdc54f7b070",
+        "parameters": {
+          "tagName": {
+            "value": "Owner"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Inherit-RG-Tags-Team",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ea3f2387-9b95-492a-a190-fcdc54f7b070",
+        "parameters": {
+          "tagName": {
+            "value": "Team"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Inherit-RG-Tags-Workload",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ea3f2387-9b95-492a-a190-fcdc54f7b070",
+        "parameters": {
+          "tagName": {
+            "value": "Workload"
+          }
+        }
+      }
+    ],
+    "policyDefinitionGroups": []
+  }
+}

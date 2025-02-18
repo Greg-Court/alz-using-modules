@@ -1,0 +1,198 @@
+{
+  "name": "Update-VMs-by-Tag",
+  "type": "Microsoft.Authorization/policySetDefinitions",
+  "apiVersion": "2024-04-01",
+  "properties": {
+    "policyType": "Custom",
+    "displayName": "Update VMs based on Patch Group",
+    "description": "Update VMs based on Patch Group",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "General"
+    },
+    "parameters": {},
+    "policyDefinitions": [
+      {
+        "policyDefinitionReferenceId": "Update-VMs-PatchGroup-1",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/6131f1ad-7f3f-4ebe-99f5-3b5960f60424/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "1"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-PatchGroup-2",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/6131f1ad-7f3f-4ebe-99f5-3b5960f60424/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-02"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "2"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-PatchGroup-3",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/6131f1ad-7f3f-4ebe-99f5-3b5960f60424/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-03"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "3"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-PatchGroup-1-NoReboot",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/6131f1ad-7f3f-4ebe-99f5-3b5960f60424/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-noreboot-mgmt-ne-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "1_NoReboot"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-PatchGroup-2-NoReboot",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/6131f1ad-7f3f-4ebe-99f5-3b5960f60424/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-noreboot-mgmt-ne-02"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "2_NoReboot"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-PatchGroup-3-NoReboot",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/6131f1ad-7f3f-4ebe-99f5-3b5960f60424/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-noreboot-mgmt-ne-03"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "3_NoReboot"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-PatchGroup-1-AlwaysReboot",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/6131f1ad-7f3f-4ebe-99f5-3b5960f60424/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "1_AlwaysReboot"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-PatchGroup-2-AlwaysReboot",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/6131f1ad-7f3f-4ebe-99f5-3b5960f60424/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-02"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "2_AlwaysReboot"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-PatchGroup-3-AlwaysReboot",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/6131f1ad-7f3f-4ebe-99f5-3b5960f60424/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-03"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "3_AlwaysReboot"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      }
+    ],
+    "policyDefinitionGroups": []
+  }
+}

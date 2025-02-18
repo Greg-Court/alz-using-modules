@@ -1,0 +1,95 @@
+{
+  "name": "Enforce-RG-Tag-and-Values",
+  "type": "Microsoft.Authorization/policyDefinitions",
+  "apiVersion": "2024-04-01",
+  "properties": {
+    "displayName": "Require tag and appropriate values on resource groups",
+    "policyType": "Custom",
+    "mode": "Indexed",
+    "description": "Enforces a required tag and possible values on resource groups.",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "Tags"
+    },
+    "parameters": {
+      "tagName": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Tag Name",
+          "description": "Name of the tag to enforce"
+        }
+      },
+      "tagValues": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Tag Values",
+          "description": "Allowed values for the tag"
+        }
+      },
+      "effect": {
+        "type": "String",
+        "allowedValues": ["Audit", "Deny", "Disabled"],
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        },
+        "defaultValue": "Deny"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+          },
+          {
+            "allOf": [
+              {
+                "field": "name",
+                "notLike": "AzureBackupRG*"
+              },
+              {
+                "field": "name",
+                "notLike": "ResourceMover*"
+              },
+              {
+                "field": "name",
+                "notLike": "databricks-rg*"
+              },
+              {
+                "field": "name",
+                "notLike": "NetworkWatcherRG"
+              },
+              {
+                "field": "name",
+                "notLike": "microsoft-network"
+              },
+              {
+                "field": "name",
+                "notLike": "LogAnalyticsDefaultResources"
+              },
+              {
+                "field": "name",
+                "notLike": "DynamicsDeployments*"
+              },
+              {
+                "field": "name",
+                "notLike": "MC_myResourceGroup*"
+              }
+            ]
+          },
+          {
+            "not": {
+              "field": "[concat('tags[', parameters('tagName'), ']')]",
+              "in": "[parameters('tagValues')]"
+            }
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    }
+  }
+}

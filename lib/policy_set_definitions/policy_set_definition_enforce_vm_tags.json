@@ -1,0 +1,90 @@
+{
+  "name": "Enforce-VM-Tags",
+  "type": "Microsoft.Authorization/policySetDefinitions",
+  "apiVersion": "2024-04-01",
+  "properties": {
+    "policyType": "Custom",
+    "displayName": "Ensure mandatory tagging is applied to Virtual Machines",
+    "description": "Contains the VM tagging policies applicable to the org",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "General"
+    },
+    "parameters": {
+      "effect": {
+        "type": "String",
+        "allowedValues": ["Audit", "Deny", "Disabled"],
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        },
+        "defaultValue": "Deny"
+      }
+    },
+    "policyDefinitions": [
+      {
+        "policyDefinitionReferenceId": "Enforce-VM-Backup-Tag",
+        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Enforce-VM-Tag-and-Values",
+        "parameters": {
+          "tagName": {
+            "value": "Backup"
+          },
+          "tagValues": {
+            "value": [
+              "Bronze-Short",
+              "Bronze-Short-Enhanced",
+              "Bronze-Medium",
+              "Bronze-Medium-Enhanced",
+              "Bronze-Long",
+              "Bronze-Long-Enhanced",
+              "Bronze-Max",
+              "Bronze-Max-Enhanced",
+              "Silver-Short",
+              "Silver-Short-Enhanced",
+              "Silver-Medium",
+              "Silver-Medium-Enhanced",
+              "Silver-Long",
+              "Silver-Long-Enhanced",
+              "Silver-Max",
+              "Silver-Max-Enhanced",
+              "Gold-Short",
+              "Gold-Short-Enhanced",
+              "Gold-Medium",
+              "Gold-Medium-Enhanced",
+              "Gold-Long",
+              "Gold-Long-Enhanced",
+              "Gold-Max",
+              "Gold-Max-Enhanced",
+              "Manual",
+              "None"
+            ]
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Enforce-VM-PatchGrp-Tag",
+        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Enforce-VM-Tag-and-Values",
+        "parameters": {
+          "tagName": {
+            "value": "PatchGroup"
+          },
+          "tagValues": {
+            "value": [
+              "1",
+              "2",
+              "3",
+              "1_NoReboot",
+              "2_NoReboot",
+              "3_NoReboot",
+              "1_AlwaysReboot",
+              "2_AlwaysReboot",
+              "3_AlwaysReboot",
+              "Manual"
+            ]
+          }
+        }
+      }
+    ],
+    "policyDefinitionGroups": []
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "name": "Enforce-RG-Tags",
+  "type": "Microsoft.Authorization/policySetDefinitions",
+  "apiVersion": "2024-04-01",
+  "properties": {
+    "policyType": "Custom",
+    "displayName": "Ensure mandatory tagging is applied to Resource Groups",
+    "description": "Contains the resource group tagging policies applicable to the organization.",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "Tags"
+    },
+    "parameters": {
+      "effect": {
+        "type": "String",
+        "allowedValues": ["Audit", "Deny", "Disabled"],
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        },
+        "defaultValue": "Deny"
+      }
+    },
+    "policyDefinitions": [
+      {
+        "policyDefinitionReferenceId": "Enforce-BusinessUnit-Tag",
+        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag-and-Values",
+        "parameters": {
+          "tagName": {
+            "value": "BusinessUnit"
+          },
+          "tagValues": {
+            "value": [
+              "Infosec",
+              "IT Apps",
+              "DIP",
+              "AI Ops",
+              "Business Engagement"
+            ]
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Enforce-Env-Tag",
+        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag-and-Values",
+        "parameters": {
+          "tagName": {
+            "value": "Env"
+          },
+          "tagValues": {
+            "value": ["Test", "Dev", "QA", "Prod"]
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Enforce-Team-Tag",
+        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag-and-Values",
+        "parameters": {
+          "tagName": {
+            "value": "Team"
+          },
+          "tagValues": {
+            "value": [
+              "Info_Security",
+              "Cyber_Security",
+              "Salesforce",
+              "Workday",
+              "M365",
+              "Infra",
+              "Software_Dev",
+              "Data_Engineer",
+              "Power BI",
+              "Data_Scientist"
+            ]
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Enforce-CostCenter-Tag",
+        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag-and-Values",
+        "parameters": {
+          "tagName": {
+            "value": "CostCenter"
+          },
+          "tagValues": {
+            "value": ["IT"]
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Enforce-Workload-Tag",
+        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag",
+        "parameters": {
+          "tagName": {
+            "value": "Workload"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Enforce-Owner-Tag",
+        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag",
+        "parameters": {
+          "tagName": {
+            "value": "Owner"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Enforce-Description-Tag",
+        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag",
+        "parameters": {
+          "tagName": {
+            "value": "Description"
+          }
+        }
+      }
+    ],
+    "policyDefinitionGroups": []
+  }
+}

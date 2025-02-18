@@ -1,0 +1,18 @@
+{
+  "extend_es_corp": {
+    "policy_assignments": [],
+    "policy_definitions": [],
+    "policy_set_definitions": [],
+    "role_definitions": [],
+    "archetype_config": {
+      "parameters": {
+        "Deny-Public-Endpoints": {
+          "StoragePublicIpDenyEffect": "Audit",
+          "storageAccountsPublicAccess": "Audit",
+          "AutomationPublicIpDenyEffect": "Audit"
+        }
+      },
+      "access_control": {}
+    }
+  }
+}

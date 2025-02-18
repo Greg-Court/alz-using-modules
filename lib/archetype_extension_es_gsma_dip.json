@@ -1,0 +1,60 @@
+{
+  "extend_gsma_dip": {
+    "policy_assignments": [],
+    "policy_definitions": [],
+    "policy_set_definitions": [],
+    "role_definitions": [],
+    "archetype_config": {
+      "parameters": {
+        "Deny-Public-Endpoints": {
+          "StoragePublicIpDenyEffect": "Audit",
+          "storageAccountsPublicAccess": "Audit",
+          "AutomationPublicIpDenyEffect": "Audit",
+          "PostgreSQLFlexPublicIpDenyEffect": "Audit",
+          "SqlServerPublicIpDenyEffect": "Audit",
+          "KeyVaultPublicIpDenyEffect": "Audit",
+          "MySQLFlexPublicIpDenyEffect": "Audit",
+          "CosmosPublicIpDenyEffect": "Audit",
+          "BatchPublicIpDenyEffect": "Audit",
+          "AKSPublicIpDenyEffect": "Audit",
+          "ACRPublicIpDenyEffect": "Audit",
+          "AFSPublicIpDenyEffect": "Audit",
+          "RedisCachePublicIpDenyEffect": "Audit",
+          "BotServicePublicIpDenyEffect": "Audit",
+          "AppConfigPublicIpDenyEffect": "Audit",
+          "FunctionPublicIpDenyEffect": "Audit",
+          "MariaDbPublicIpDenyEffect": "Audit",
+          "ApiManPublicIpDenyEffect": "AuditIfNotExists",
+          "ContainerAppsEnvironmentDenyEffect": "Audit",
+          "AsePublicIpDenyEffect": "Audit",
+          "AsPublicIpDenyEffect": "Audit",
+          "MlPublicIpDenyEffect": "Audit",
+          "keyVaultManagedHsmDisablePublicNetwork": "Audit",
+          "eventHubNamespacesPublicNetworkAccess": "Audit",
+          "serviceBusDisablePublicNetworkAccess": "Audit",
+          "cognitiveServicesPublicNetworkAccess": "Audit",
+          "cognitiveSearchPublicNetworkAccess": "Audit",
+          "FunctionAppSlotPublicIpDenyEffect": "Audit",
+          "logicAppPublicNetworkAccessEffect": "Audit",
+          "eventGridTopicPublicNetworkAccess": "Audit",
+          "containerAppsPublicNetworkAccess": "Audit",
+          "avdWorkspacePublicNetworkAccess": "Audit",
+          "avdHostPoolPublicNetworkAccess": "Audit",
+          "cognitiveServicesNetworkAccess": "Audit",
+          "managedDiskPublicNetworkAccess": "Audit",
+          "sqlManagedPublicNetworkAccess": "Audit",
+          "postgreSqlPublicNetworkAccess": "Audit",
+          "eventGridPublicNetworkAccess": "Audit",
+          "appSlotsPublicNetworkAccess": "Audit",
+          "grafanaPublicNetworkAccess": "Audit",
+          "synapsePublicNetworkAccess": "Audit",
+          "mySqlPublicNetworkAccess": "Audit",
+          "adxPublicNetworkAccess": "Audit",
+          "adfPublicNetworkAccess": "Audit",
+          "AsrVaultDenyEffect": "Audit"
+        }
+      },
+      "access_control": {}
+    }
+  }
+}

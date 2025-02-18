@@ -1,0 +1,19 @@
+{
+  "name": "Update-VMs-by-Tag",
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2024-04-01",
+  "properties": {
+    "description": "Ensure VMs with specific Patch Group tags are updated using Azure Update Manager.",
+    "displayName": "Update VMs based on PatchGroup tag",
+    "notScopes": [
+    ],
+    "parameters": {},
+    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policySetDefinitions/Update-VMs-by-Tag",
+    "scope": "${current_scope_resource_id}",
+    "enforcementMode": null
+  },
+  "location": "${default_location}",
+  "identity": {
+    "type": "SystemAssigned"
+  }
+}
