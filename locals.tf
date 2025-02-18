@@ -1,18 +1,4 @@
 locals {
-  connectivity_resource_groups = {
-    # ddos = {
-    #   name     = "rg-hub-ddos-${var.loc}-01"
-    #   location = var.location
-    # }
-    vnet_primary = {
-      name     = "rg-hub-${var.loc}-01"
-      location = var.location
-    }
-    dns = {
-      name     = "rg-hub-dns-${var.loc}-01"
-      location = var.location
-    }
-  }
   default_retries = {
     management_groups = {
       error_message_regex = ["AuthorizationFailed", "Permission to Microsoft.Management/managementGroups on resources of type 'Write' is required on the management group or its ancestors."]
