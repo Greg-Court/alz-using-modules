@@ -25,6 +25,10 @@ provider "alz" {
   library_overwrite_enabled = false
   library_references = [
     {
+      path = "platform/alz"
+      ref  = "2024.07.3"
+    },
+    {
       custom_url = "${path.root}/lib"
     }
   ]

@@ -11,7 +11,7 @@ management_groups:
   - id: platform
     display_name: "Platform"
     archetypes:
-      - platform
+      - platform_override
     parent_id: alz
     exists: false
 
