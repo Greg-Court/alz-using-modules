@@ -4,8 +4,8 @@ module "management_resources" {
 
   automation_account_name                          = "aa-mgmt-${var.loc}-01"
   location                                         = var.location
-  log_analytics_workspace_name                     = "law-mgmt-${var.loc}-01"
-  resource_group_name                              = "rg-mgmt-${var.loc}-02"
+  log_analytics_workspace_name                     = local.log_analytics_workspace_name
+  resource_group_name                              = local.resource_group_name_management
   automation_account_encryption                    = null
   automation_account_identity                      = null
   automation_account_local_authentication_enabled  = true
@@ -24,7 +24,7 @@ module "management_resources" {
     }
   }
   enable_telemetry                                           = true
-  linked_automation_account_creation_enabled                 = true
+  linked_automation_account_creation_enabled                 = false
   log_analytics_solution_plans                               = null
   log_analytics_workspace_allow_resource_only_permissions    = true
   log_analytics_workspace_cmk_for_query_forced               = null
@@ -45,4 +45,8 @@ module "management_resources" {
       name = "uami-ama-${var.loc}-01"
     }
   }
+}
+
+locals {
+  resource_group_name_management = "rg-mgmt-${var.loc}-02"
 }

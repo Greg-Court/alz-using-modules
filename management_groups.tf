@@ -62,12 +62,14 @@ locals {
   ddos_protection_plan_name               = "ddos-${var.loc}-01"
   management_groups = {
     policy_default_values = {
-      ama_change_tracking_data_collection_rule_id = "/subscriptions/${var.subscription_id_management}/providers/Microsoft.Insights/dataCollectionRules/${local.dcr_change_tracking_name}"
-      ama_mdfc_sql_data_collection_rule_id        = "/subscriptions/${var.subscription_id_management}/providers/Microsoft.Insights/dataCollectionRules/${local.dcr_defender_sql_name}"
-      ama_vm_insights_data_collection_rule_id     = "/subscriptions/${var.subscription_id_management}/providers/Microsoft.Insights/dataCollectionRules/${local.dcr_vm_insights_name}"
-      ama_user_assigned_managed_identity_id       = "/subscriptions/${var.subscription_id_management}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/${local.ama_user_assigned_managed_identity_name}"
+      ama_change_tracking_data_collection_rule_id = "/subscriptions/${var.subscription_id_management}/resourceGroups/${local.resource_group_name_management}/providers/Microsoft.Insights/dataCollectionRules/${local.dcr_change_tracking_name}"
+      ama_mdfc_sql_data_collection_rule_id        = "/subscriptions/${var.subscription_id_management}/resourceGroups/${local.resource_group_name_management}/providers/Microsoft.Insights/dataCollectionRules/${local.dcr_defender_sql_name}"
+      ama_vm_insights_data_collection_rule_id     = "/subscriptions/${var.subscription_id_management}/resourceGroups/${local.resource_group_name_management}/providers/Microsoft.Insights/dataCollectionRules/${local.dcr_vm_insights_name}"
+      ama_user_assigned_managed_identity_id       = "/subscriptions/${var.subscription_id_management}/resourceGroups/${local.resource_group_name_management}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/${local.ama_user_assigned_managed_identity_name}"
       ama_user_assigned_managed_identity_name     = local.ama_user_assigned_managed_identity_name
-      log_analytics_workspace_id                  = "/subscriptions/${var.subscription_id_management}/providers/Microsoft.OperationalInsights/workspaces/${local.log_analytics_workspace_name}"
+      log_analytics_workspace_id                  = "/subscriptions/${var.subscription_id_management}/resourceGroups/${local.resource_group_name_management}/providers/Microsoft.OperationalInsights/workspaces/${local.log_analytics_workspace_name}"
+
+      # ddos_protection_plan_id                   = "/subscriptions/${var.subscription_id_management}/resourceGroups/${local.resource_group_name_management}/providers/Microsoft.Network/ddosProtectionPlans/${local.ddos_protection_plan_name}"
       # ddos_protection_plan_id                     = "/subscriptions/${var.subscription_id_management}/providers/Microsoft.Network/ddosProtectionPlans/${local.ddos_protection_plan_name}" 
       # private_dns_zone_subscription_id            = var.subscription_id_connectivity
       # private_dns_zone_region                     = var.location
