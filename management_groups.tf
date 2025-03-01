@@ -31,22 +31,22 @@ module "management_groups" {
             enableAscForCspm                            = "DoNotEnforce"
           }
         }
-        # allowed_locations.alz_policy_assignment.json
-        Allowed-Locations = {
+        Allowed-Locations = { # allowed_locations.alz_policy_assignment.json
           enforcement_mode = "DoNotEnforce"
           parameters = {
-            listOfAllowedLocations = [
-              var.location
-            ]
+            listOfAllowedLocations = jsonencode([
+              "uksouth",
+              "ukwest"
+            ])
           }
         }
-        # allowed_locations_resource_groups.alz_policy_assignment.json
-        Allowed-RG-Locations = {
+        Allowed-RG-Locations = { # allowed_locations_resource_groups.alz_policy_assignment.json
           enforcement_mode = "DoNotEnforce"
           parameters = {
-            listOfAllowedLocations = [
-              var.location
-            ]
+            listOfAllowedLocations = jsonencode([
+              "uksouth",
+              "ukwest"
+            ])
           }
         }
       }
@@ -112,8 +112,7 @@ module "management_groups" {
         Deploy-Private-DNS-Zones = { enforcement_mode = "DoNotEnforce" }
       }
     }
-    # Online archetype has no policy assignments
-    online = {
+    online = { # Online archetype has no policy assignments
       policy_assignments = {}
     }
     sandbox = {
@@ -121,8 +120,7 @@ module "management_groups" {
         Enforce-ALZ-Sandbox = { enforcement_mode = "DoNotEnforce" }
       }
     }
-    # Management archetype has no policy assignments
-    management = {
+    management = { # Management archetype has no policy assignments
       policy_assignments = {}
     }
     connectivity = {
@@ -145,14 +143,6 @@ module "management_groups" {
         Enforce-ALZ-Decomm = { enforcement_mode = "DoNotEnforce" }
       }
     }
-    # Example of how to update a policy assignment enforcement mode for Private Link DNS Zones
-    # corp = {
-    #   policy_assignments = {
-    #     Deploy-Private-DNS-Zones = {
-    #       enforcement_mode = "DoNotEnforce"
-    #     }
-    #   }
-    # }
   }
   delays                              = try(var.management_group_settings.delays, {})
   enable_telemetry                    = var.enable_telemetry
