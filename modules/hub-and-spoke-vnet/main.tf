@@ -1,6 +1,6 @@
 module "hub_and_spoke_vnet" {
   source  = "Azure/avm-ptn-hubnetworking/azurerm"
-  version = "0.5.0"
+  version = "0.5.2"
 
   hub_virtual_networks = local.hub_virtual_networks
   enable_telemetry     = var.enable_telemetry
@@ -44,7 +44,7 @@ module "virtual_network_gateway" {
 
 module "dns_resolver" {
   source  = "Azure/avm-res-network-dnsresolver/azurerm"
-  version = "0.4.0"
+  version = "0.7.1"
 
   for_each = local.private_dns_zones
 
@@ -66,7 +66,7 @@ module "dns_resolver" {
 
 module "private_dns_zones" {
   source  = "Azure/avm-ptn-network-private-link-private-dns-zones/azurerm"
-  version = "0.7.1"
+  version = "0.9.0"
 
   for_each = local.private_dns_zones
 
@@ -81,7 +81,7 @@ module "private_dns_zones" {
 
 module "private_dns_zone_auto_registration" {
   source  = "Azure/avm-res-network-privatednszone/azurerm"
-  version = "0.2.2"
+  version = "0.3.2"
 
   for_each = local.private_dns_zones_auto_registration
 
