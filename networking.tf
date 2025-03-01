@@ -1,16 +1,16 @@
-resource azurerm_resource_group "hub_primary" {
+resource "azurerm_resource_group" "hub_primary" {
   name     = "rg-hub-${var.loc}-01"
   location = var.location
   provider = azurerm.connectivity
 }
 
-resource azurerm_resource_group "dns" {
+resource "azurerm_resource_group" "dns" {
   name     = "rg-hub-dns-${var.loc}-01"
   location = var.location
   provider = azurerm.connectivity
 }
 
-resource azurerm_resource_group "bastion_primary" {
+resource "azurerm_resource_group" "bastion_primary" {
   name     = "rg-hub-bas-${var.loc}-01"
   location = var.location
   provider = azurerm.connectivity
@@ -46,16 +46,16 @@ module "hub_and_spoke_vnet" {
           zones                 = ["1", "2", "3"]
           default_ip_configuration = {
             public_ip_config = {
-              name  = "pip-fw-hub-${var.loc}"
+              name  = "pip-fw-hub-${var.loc}-01"
               zones = ["1", "2", "3"]
             }
           }
           management_subnet_address_prefix = "10.0.0.192/26" # only required if Basic SKU
-          management_ip_configuration = { # only required if Basic SKU
-              name  = "myManagementIp"
+          management_ip_configuration = {                    # only required if Basic SKU
+            name = "myManagementIp"
             public_ip_config = {
               name  = "fw-hub-mgmt-${var.loc}-01"
-              zones = ["1", "2", "3"]
+              # zones = ["1", "2", "3"]                        # bug - does not provision in zones as of 01/03/25 
             }
           }
           firewall_policy = {
@@ -104,24 +104,25 @@ module "hub_and_spoke_vnet" {
         is_primary                     = true
         auto_registration_zone_enabled = true
         auto_registration_zone_name    = "uks.azure.local"
-        subnet_address_prefix        = "10.0.1.0/26"
-        subnet_name                    = "ADPRSubnet"
-        private_dns_resolver = {
-          name = "pdr-hub-dns-${var.loc}-01"
-        }
+
+        # subnet_address_prefix          = "10.0.1.0/26"
+        # subnet_name                    = "ADPRSubnet"
+        # private_dns_resolver = {
+        #   name = "pdr-hub-dns-${var.loc}-01"
+        # }
       }
-      bastion = {
-        sku                   = "Basic"
-        resource_group_name = azurerm_resource_group.bastion_primary.name
-        subnet_address_prefix = "10.0.0.64/26"
-        bastion_host = {
-          name = "bas-hub-${var.loc}-01"
-        }
-        bastion_public_ip = {
-          name  = "pip-bas-hub-${var.loc}-01"
-          zones = []
-        }
-      }
+      # bastion = {
+      #   sku                   = "Basic"
+      #   resource_group_name   = azurerm_resource_group.bastion_primary.name
+      #   subnet_address_prefix = "10.0.0.64/26"
+      #   bastion_host = {
+      #     name = "bas-hub-${var.loc}-01"
+      #   }
+      #   bastion_public_ip = {
+      #     name  = "pip-bas-hub-${var.loc}-01"
+      #     zones = []
+      #   }
+      # }
     }
   }
   enable_telemetry = true
