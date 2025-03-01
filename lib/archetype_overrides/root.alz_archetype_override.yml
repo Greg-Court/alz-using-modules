@@ -1,0 +1,27 @@
+name: "root_override"
+base_archetype: "root"
+policy_assignments_to_add: [
+  "Allowed-Locations",
+  "Allowed-RG-Locations",
+  "Inherit-RG-Tags",
+  "Update-VMs-by-Tag",
+  # "Win-VM-Eventlogs-DCR",
+  # "Linux-VM-Syslogs-DCR"
+]
+policy_assignments_to_remove: []
+policy_definitions_to_add: [
+  "Enforce-RG-Tag",
+  "Enforce-RG-Tag-and-Values",
+  "Enforce-VM-Tag-and-Values",
+  "Enforce-VM-Backup-Custom"
+]
+policy_definitions_to_remove: []
+policy_set_definitions_to_add: [
+  "Enforce-VM-Tags",
+  "Inherit-RG-Tags",
+  "Enforce-RG-Tags",
+  "Update-VMs-by-Tag"
+]
+policy_set_definitions_to_remove: []
+role_definitions_to_add: []
+role_definitions_to_remove: []

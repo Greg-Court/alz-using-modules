@@ -11,7 +11,7 @@
     ],
     "parameters": {
       "dcrResourceId": {
-        "value": "/subscriptions/6131f1ad-7f3f-4ebe-99f5-3b5960f60424/resourceGroups/rg-mon-mgmt-ne-01/providers/Microsoft.Insights/dataCollectionRules/dcr-winevents-mgmt-ne-01"
+        "value": "/subscriptions/TODO/resourceGroups/rg-mon-mgmt-ne-01/providers/Microsoft.Insights/dataCollectionRules/dcr-winevents-mgmt-ne-01"
       },
       "scopeToSupportedImages": {
         "value": false

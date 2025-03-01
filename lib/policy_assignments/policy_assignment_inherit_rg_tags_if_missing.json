@@ -7,7 +7,7 @@
     "displayName": "Inherit Resource Group Tags",
     "notScopes": [],
     "parameters": {},
-    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policySetDefinitions/Inherit-RG-Tags",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/Inherit-RG-Tags",
     "scope": "${current_scope_resource_id}",
     "enforcementMode": null
   },

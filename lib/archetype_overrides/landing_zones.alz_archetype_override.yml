@@ -1,0 +1,12 @@
+name: "landing_zones_override"
+base_archetype: "landing_zones"
+policy_assignments_to_add: [
+  "Enforce-VM-Tags", "Enforce-RG-Tags"
+]
+policy_assignments_to_remove: ["Enable-DDoS-VNET", "Deploy-VM-Backup"]
+policy_definitions_to_add: []
+policy_definitions_to_remove: []
+policy_set_definitions_to_add: []
+policy_set_definitions_to_remove: []
+role_definitions_to_add: []
+role_definitions_to_remove: []

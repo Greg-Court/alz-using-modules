@@ -17,7 +17,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/6131f1ad-7f3f-4ebe-99f5-3b5960f60424/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-01"
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-ne/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-01"
           },
           "tagValues": {
             "value": [
@@ -37,7 +37,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/6131f1ad-7f3f-4ebe-99f5-3b5960f60424/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-02"
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-02"
           },
           "tagValues": {
             "value": [
@@ -57,7 +57,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/6131f1ad-7f3f-4ebe-99f5-3b5960f60424/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-03"
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-03"
           },
           "tagValues": {
             "value": [
@@ -77,7 +77,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/6131f1ad-7f3f-4ebe-99f5-3b5960f60424/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-noreboot-mgmt-ne-01"
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-noreboot-mgmt-ne-01"
           },
           "tagValues": {
             "value": [
@@ -97,7 +97,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/6131f1ad-7f3f-4ebe-99f5-3b5960f60424/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-noreboot-mgmt-ne-02"
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-noreboot-mgmt-ne-02"
           },
           "tagValues": {
             "value": [
@@ -117,7 +117,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/6131f1ad-7f3f-4ebe-99f5-3b5960f60424/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-noreboot-mgmt-ne-03"
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-noreboot-mgmt-ne-03"
           },
           "tagValues": {
             "value": [
@@ -137,7 +137,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/6131f1ad-7f3f-4ebe-99f5-3b5960f60424/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-01"
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-01"
           },
           "tagValues": {
             "value": [
@@ -157,7 +157,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/6131f1ad-7f3f-4ebe-99f5-3b5960f60424/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-02"
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-02"
           },
           "tagValues": {
             "value": [
@@ -177,7 +177,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/6131f1ad-7f3f-4ebe-99f5-3b5960f60424/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-03"
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-03"
           },
           "tagValues": {
             "value": [

@@ -4,7 +4,7 @@ management_groups:
   - id: alz
     display_name: "Azure Landing Zones"
     archetypes:
-      - root
+      - root_override
     parent_id: null
     exists: false
 
@@ -18,7 +18,7 @@ management_groups:
   - id: landingzones
     display_name: "Landing zones"
     archetypes:
-      - landing_zones
+      - landing_zones_override
     parent_id: alz
     exists: false
 
@@ -53,14 +53,14 @@ management_groups:
   - id: connectivity
     display_name: "Connectivity"
     archetypes:
-      - connectivity
+      - connectivity_override
     parent_id: platform
     exists: false
 
   - id: identity
     display_name: "Identity"
     archetypes:
-      - identity
+      - identity_override
     parent_id: platform
     exists: false
 

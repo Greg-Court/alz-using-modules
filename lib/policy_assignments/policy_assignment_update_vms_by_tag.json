@@ -8,7 +8,7 @@
     "notScopes": [
     ],
     "parameters": {},
-    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policySetDefinitions/Update-VMs-by-Tag",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/Update-VMs-by-Tag",
     "scope": "${current_scope_resource_id}",
     "enforcementMode": null
   },

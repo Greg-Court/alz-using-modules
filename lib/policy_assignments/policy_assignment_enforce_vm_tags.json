@@ -14,7 +14,7 @@
         "message": "VM requires mandatory tags to be applied."
       }
     ],
-    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policySetDefinitions/Enforce-VM-Tags",
+    "policyDefinitionId": "$/providers/Microsoft.Authorization/policySetDefinitions/Enforce-VM-Tags",
     "scope": "${current_scope_resource_id}",
     "enforcementMode": null
   },
