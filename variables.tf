@@ -33,3 +33,15 @@ variable "tags" {
   default     = {}
   description = "Default tags to apply to all resources."
 }
+
+variable "enable_telemetry" {
+  type        = bool
+  default     = true
+  description = "Enable telemetry for all resources."
+}
+
+variable "management_group_settings" {
+  type        = any
+  default     = {}
+  description = "Settings for the Management Group module."
+}

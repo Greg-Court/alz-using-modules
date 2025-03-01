@@ -9,7 +9,7 @@ module "management_groups" {
     ama_mdfc_sql_data_collection_rule_id        = module.management_resources.data_collection_rule_ids["defender_sql"].id
     ama_vm_insights_data_collection_rule_id     = module.management_resources.data_collection_rule_ids["vm_insights"].id
     ama_user_assigned_managed_identity_id       = module.management_resources.user_assigned_identity_ids["ama"].id
-    ama_user_assigned_managed_identity_name     = module.management_resources.user_assigned_identity_names["ama"].name
+    # ama_user_assigned_managed_identity_name     = module.management_resources.user_assigned_identity_names["ama"].name # incorrect, unnecessary?
     log_analytics_workspace_id                  = module.management_resources.log_analytics_workspace.id
     ddos_protection_plan_id                     = null
     private_dns_zone_subscription_id            = var.subscription_id_connectivity

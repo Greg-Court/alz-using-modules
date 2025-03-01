@@ -24,13 +24,13 @@ module "hub_and_spoke_vnet" {
    hub_virtual_networks = {
     primary = {
       hub_virtual_network = {
-        name                          = "vnet-hub-${var.loc}"
+        name                          = "vnet-hub-${var.loc}-01"
         resource_group_name           = local.connectivity_resource_groups.hub_primary.name
         location                      = var.location
         address_space                 = ["10.0.0.0/16"]
         routing_address_space         = ["10.0.0.0/16"]
-        route_table_name_firewall     = "rt-hub-fw-${var.loc}"
-        route_table_name_user_subnets = "rt-hub-user-${var.loc}"
+        route_table_name_firewall     = "rt-hub-fw-${var.loc}-01"
+        route_table_name_user_subnets = "rt-hub-user-${var.loc}-01"
         ddos_protection_plan_id       = null
         subnets = {}
         firewall = {
