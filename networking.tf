@@ -1,14 +1,19 @@
-locals {
-  connectivity_resource_groups = {
-    hub_primary = {
-      name     = "rg-hub-${var.loc}-01"
-      location = var.location
-    }
-    dns = {
-      name     = "rg-hub-dns-${var.loc}-01"
-      location = var.location
-    }
-  }
+resource azurerm_resource_group "hub_primary" {
+  name     = "rg-hub-${var.loc}-01"
+  location = var.location
+  provider = azurerm.connectivity
+}
+
+resource azurerm_resource_group "dns" {
+  name     = "rg-hub-dns-${var.loc}-01"
+  location = var.location
+  provider = azurerm.connectivity
+}
+
+resource azurerm_resource_group "bastion_primary" {
+  name     = "rg-hub-bas-${var.loc}-01"
+  location = var.location
+  provider = azurerm.connectivity
 }
 
 module "hub_and_spoke_vnet" {
@@ -25,7 +30,7 @@ module "hub_and_spoke_vnet" {
     primary = {
       hub_virtual_network = {
         name                          = "vnet-hub-${var.loc}-01"
-        resource_group_name           = local.connectivity_resource_groups.hub_primary.name
+        resource_group_name           = azurerm_resource_group.hub_primary.name
         location                      = var.location
         address_space                 = ["10.0.0.0/16"]
         routing_address_space         = ["10.0.0.0/16"]
@@ -87,7 +92,7 @@ module "hub_and_spoke_vnet" {
         }
       }
       private_dns_zones = {
-        resource_group_name            = local.connectivity_resource_groups.dns.name
+        resource_group_name            = azurerm_resource_group.dns.name
         is_primary                     = true
         auto_registration_zone_enabled = true
         auto_registration_zone_name    = "uks.azure.local"
@@ -96,16 +101,18 @@ module "hub_and_spoke_vnet" {
           name = "pdr-hub-dns-${var.loc}-01"
         }
       }
-      # bastion = { # better to deploy separately as not possible to deploy in separate resource group to hubnetworking
-      #   subnet_address_prefix = "10.0.0.64/26"
-      #   bastion_host = {
-      #     name = "bas-hub-${var.loc}-01"
-      #   }
-      #   bastion_public_ip = {
-      #     name  = "pip-bas-hub-${var.loc}-01"
-      #     zones = []
-      #   }
-      # }
+      bastion = {
+        sku                   = "Basic"
+        resource_group_name = azurerm_resource_group.bastion_primary.name
+        subnet_address_prefix = "10.0.0.64/26"
+        bastion_host = {
+          name = "bas-hub-${var.loc}-01"
+        }
+        bastion_public_ip = {
+          name  = "pip-bas-hub-${var.loc}-01"
+          zones = []
+        }
+      }
     }
   }
   enable_telemetry = true

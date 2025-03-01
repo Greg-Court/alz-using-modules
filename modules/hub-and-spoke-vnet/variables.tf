@@ -18,6 +18,7 @@ variable "hub_virtual_networks" {
       subnet_address_prefix = string
       bastion_host          = any
       bastion_public_ip     = any
+      sku                   = string
     }))
     virtual_network_gateways = optional(object({
       subnet_address_prefix = string

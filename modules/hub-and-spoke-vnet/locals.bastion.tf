@@ -7,6 +7,7 @@ locals {
     for key, value in var.hub_virtual_networks : key => merge({
       location            = value.hub_virtual_network.location
       resource_group_name = value.hub_virtual_network.resource_group_name
+      sku                 = value.bastion.sku
       ip_configuration = {
         name                 = "bastion-ip-config"
         subnet_id            = module.hub_and_spoke_vnet.virtual_networks[key].subnet_ids["${key}-bastion"]
