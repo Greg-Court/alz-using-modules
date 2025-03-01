@@ -5,7 +5,7 @@ module "management_resources" {
   automation_account_name                          = "aa-mgmt-${var.loc}-01"
   location                                         = var.location
   log_analytics_workspace_name                     = "law-mgmt-${var.loc}-01"
-  resource_group_name                              = "rg-mgmt-${var.loc}-01"
+  resource_group_name                              = "rg-mgmt-${var.loc}-02"
   automation_account_encryption                    = null
   automation_account_identity                      = null
   automation_account_local_authentication_enabled  = true

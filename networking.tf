@@ -43,6 +43,11 @@ module "hub_and_spoke_vnet" {
           name                  = "fw-hub-${var.loc}-01"
           sku_name              = "AZFW_VNet"
           sku_tier              = "Basic"
+          management_subnet_address_prefix = "10.0.0.192/26" # only required if Basic SKU
+          management_ip_configuration = { # only required if Basic SKU
+            name  = "fw-hub-mgmt-${var.loc}-01"
+            zones = ["1", "2", "3"]
+          }
           zones                 = ["1", "2", "3"]
           default_ip_configuration = {
             public_ip_config = {
@@ -57,7 +62,7 @@ module "hub_and_spoke_vnet" {
       }
 
       virtual_network_gateways = {
-        subnet_address_prefix = "10.0.0.128/27"
+        subnet_address_prefix = "10.0.0.128/26"
         # express_route = {
         #   location = var.location
         #   name     = "vgw-hub-er-${var.loc}-01"
@@ -96,7 +101,8 @@ module "hub_and_spoke_vnet" {
         is_primary                     = true
         auto_registration_zone_enabled = true
         auto_registration_zone_name    = "uks.azure.local"
-        subnet_address_prefix          = "10.0.0.160/28"
+        subnet_address_prefix        = "10.0.1.0/26"
+        subnet_name                    = "ADPRSubnet"
         private_dns_resolver = {
           name = "pdr-hub-dns-${var.loc}-01"
         }
