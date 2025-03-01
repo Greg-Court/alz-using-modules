@@ -26,7 +26,7 @@ provider "alz" {
   library_references = [
     {
       path = "platform/alz"
-      ref  = "2024.10.1"
+      ref  = "2025.02.0" # find latest ref here https://github.com/Azure/Azure-Landing-Zones-Library
     },
     {
       custom_url = "${path.root}/lib"
