@@ -17,11 +17,11 @@ module "hub_and_spoke_vnet" {
   hub_and_spoke_networks_settings = {
     # ddos_protection_plan = {
     #   name                = "ddos-${var.loc}"
-    #   resource_group_name = "rg-hub-ddos-${var.loc}"
+    #   resource_group_name = "rg-hub-ddos-${var.loc}-01"
     #   location            = var.location
     # }
   }
-   hub_virtual_networks = {
+  hub_virtual_networks = {
     primary = {
       hub_virtual_network = {
         name                          = "vnet-hub-${var.loc}-01"
@@ -32,13 +32,13 @@ module "hub_and_spoke_vnet" {
         route_table_name_firewall     = "rt-hub-fw-${var.loc}-01"
         route_table_name_user_subnets = "rt-hub-user-${var.loc}-01"
         ddos_protection_plan_id       = null
-        subnets = {}
+        subnets                       = {}
         firewall = {
           subnet_address_prefix = "10.0.0.0/26"
           name                  = "fw-hub-${var.loc}-01"
           sku_name              = "AZFW_VNet"
-          sku_tier              = "Standard"
-          zones = ["1", "2", "3"]
+          sku_tier              = "Basic"
+          zones                 = ["1", "2", "3"]
           default_ip_configuration = {
             public_ip_config = {
               name  = "pip-fw-hub-${var.loc}"
@@ -69,7 +69,7 @@ module "hub_and_spoke_vnet" {
         vpn = {
           location = var.location
           name     = "vgw-hub-vpn-${var.loc}-01"
-          sku = "VpnGw2AZ"
+          sku      = "VpnGw1AZ"
           ip_configurations = {
             active_active_1 = {
               public_ip = {
@@ -92,20 +92,20 @@ module "hub_and_spoke_vnet" {
         auto_registration_zone_enabled = true
         auto_registration_zone_name    = "uks.azure.local"
         subnet_address_prefix          = "10.0.0.160/28"
-        # private_dns_resolver = {
-        #   name = "pdr-hub-dns-${var.loc}-01"
-        # }
-      }
-      bastion = {
-        subnet_address_prefix = "10.0.0.64/26"
-        bastion_host = {
-          name = "bas-hub-${var.loc}-01"
-        }
-        bastion_public_ip = {
-          name  = "pip-bas-hub-${var.loc}-01"
-          zones = []
+        private_dns_resolver = {
+          name = "pdr-hub-dns-${var.loc}-01"
         }
       }
+      # bastion = { # better to deploy separately as not possible to deploy in separate resource group to hubnetworking
+      #   subnet_address_prefix = "10.0.0.64/26"
+      #   bastion_host = {
+      #     name = "bas-hub-${var.loc}-01"
+      #   }
+      #   bastion_public_ip = {
+      #     name  = "pip-bas-hub-${var.loc}-01"
+      #     zones = []
+      #   }
+      # }
     }
   }
   enable_telemetry = true

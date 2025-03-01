@@ -1,5 +1,5 @@
 name: "root_override"
-base_archetype: "root"
+base_archetype: "alz"
 policy_assignments_to_add: [
   "Allowed-Locations",
   "Allowed-RG-Locations",
