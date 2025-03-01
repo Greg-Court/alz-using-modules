@@ -24,18 +24,19 @@ module "management_groups" {
             ascExportResourceGroupName                  = "rg-asc-${var.loc}-01"
             ascExportResourceGroupLocation              = var.location
             emailSecurityContact                        = "replace.me@placeholder.com"
-            enableAscForServers                         = "DeployIfNotExists"
-            enableAscForServersVulnerabilityAssessments = "DeployIfNotExists"
-            enableAscForSql                             = "DeployIfNotExists"
-            enableAscForAppServices                     = "DeployIfNotExists"
-            enableAscForStorage                         = "DeployIfNotExists"
-            enableAscForContainers                      = "DeployIfNotExists"
-            enableAscForKeyVault                        = "DeployIfNotExists"
-            enableAscForSqlOnVm                         = "DeployIfNotExists"
-            enableAscForArm                             = "DeployIfNotExists"
-            enableAscForOssDb                           = "DeployIfNotExists"
-            enableAscForCosmosDbs                       = "DeployIfNotExists"
-            enableAscForCspm                            = "DeployIfNotExists"
+            # change to DeployIfNotExists later
+            enableAscForServers                         = "DoNotEnforce"
+            enableAscForServersVulnerabilityAssessments = "DoNotEnforce"
+            enableAscForSql                             = "DoNotEnforce"
+            enableAscForAppServices                     = "DoNotEnforce"
+            enableAscForStorage                         = "DoNotEnforce"
+            enableAscForContainers                      = "DoNotEnforce"
+            enableAscForKeyVault                        = "DoNotEnforce"
+            enableAscForSqlOnVm                         = "DoNotEnforce"
+            enableAscForArm                             = "DoNotEnforce"
+            enableAscForOssDb                           = "DoNotEnforce"
+            enableAscForCosmosDbs                       = "DoNotEnforce"
+            enableAscForCspm                            = "DoNotEnforce"
           }
         }
       }
