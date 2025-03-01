@@ -44,21 +44,22 @@ module "hub_and_spoke_vnet" {
           sku_name              = "AZFW_VNet"
           sku_tier              = "Basic"
           zones                 = ["1", "2", "3"]
-          management_subnet_address_prefix = "10.0.0.192/26" # only required if Basic SKU
-          management_ip_configuration = { # only required if Basic SKU
-            public_ip_config = {
-              name  = "fw-hub-mgmt-${var.loc}-01"
-              zones = ["1", "2", "3"]
-            }
-          }
           default_ip_configuration = {
             public_ip_config = {
               name  = "pip-fw-hub-${var.loc}"
               zones = ["1", "2", "3"]
             }
           }
+          management_subnet_address_prefix = "10.0.0.192/26" # only required if Basic SKU
+          management_ip_configuration = { # only required if Basic SKU
+              name  = "myManagementIp"
+            public_ip_config = {
+              name  = "fw-hub-mgmt-${var.loc}-01"
+              zones = ["1", "2", "3"]
+            }
+          }
           firewall_policy = {
-            name = "fwp-hub-${var.loc}"
+            name = "fwp-hub-${var.loc}-01"
           }
         }
       }
