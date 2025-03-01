@@ -31,13 +31,118 @@ module "management_groups" {
             enableAscForCspm                            = "DoNotEnforce"
           }
         }
+        # allowed_locations.alz_policy_assignment.json
+        Allowed-Locations = {
+          enforcement_mode = "DoNotEnforce"
+          parameters = {
+            listOfAllowedLocations = [
+              var.location
+            ]
+          }
+        }
+        # allowed_locations_resource_groups.alz_policy_assignment.json
+        Allowed-RG-Locations = {
+          enforcement_mode = "DoNotEnforce"
+          parameters = {
+            listOfAllowedLocations = [
+              var.location
+            ]
+          }
+        }
       }
+    }
+    platform = {
+      policy_assignments = {
+        DenyAction-DeleteUAMIAMA = { enforcement_mode = "DoNotEnforce" }
+        Deploy-MDFC-DefSQL-AMA   = { enforcement_mode = "DoNotEnforce" }
+        Deploy-VM-ChangeTrack    = { enforcement_mode = "DoNotEnforce" }
+        Deploy-VM-Monitoring     = { enforcement_mode = "DoNotEnforce" }
+        Deploy-vmArc-ChangeTrack = { enforcement_mode = "DoNotEnforce" }
+        Deploy-vmHybr-Monitoring = { enforcement_mode = "DoNotEnforce" }
+        Deploy-VMSS-ChangeTrack  = { enforcement_mode = "DoNotEnforce" }
+        Deploy-VMSS-Monitoring   = { enforcement_mode = "DoNotEnforce" }
+        Enable-AUM-CheckUpdates  = { enforcement_mode = "DoNotEnforce" }
+        Enforce-ASR              = { enforcement_mode = "DoNotEnforce" }
+        Enforce-GR-KeyVault      = { enforcement_mode = "DoNotEnforce" }
+        Enforce-Subnet-Private   = { enforcement_mode = "DoNotEnforce" }
+        Inherit-RG-Tags          = { enforcement_mode = "DoNotEnforce" } # Custom Policy
+        Enforce-VM-Tags          = { enforcement_mode = "DoNotEnforce" } # Custom Policy
+        Enforce-RG-Tags          = { enforcement_mode = "DoNotEnforce" } # Custom Policy
+      }
+    }
+    landingzones = {
+      policy_assignments = {
+        Audit-AppGW-WAF          = { enforcement_mode = "DoNotEnforce" }
+        Deny-IP-forwarding       = { enforcement_mode = "DoNotEnforce" }
+        Deny-MgmtPorts-Internet  = { enforcement_mode = "DoNotEnforce" }
+        Deny-Priv-Esc-AKS        = { enforcement_mode = "DoNotEnforce" }
+        Deny-Privileged-AKS      = { enforcement_mode = "DoNotEnforce" }
+        Deny-Storage-http        = { enforcement_mode = "DoNotEnforce" }
+        Deny-Subnet-Without-Nsg  = { enforcement_mode = "DoNotEnforce" }
+        Deploy-AzSqlDb-Auditing  = { enforcement_mode = "DoNotEnforce" }
+        Deploy-MDFC-DefSQL-AMA   = { enforcement_mode = "DoNotEnforce" }
+        Deploy-SQL-TDE           = { enforcement_mode = "DoNotEnforce" }
+        Deploy-SQL-Threat        = { enforcement_mode = "DoNotEnforce" }
+        Deploy-VM-Backup         = { enforcement_mode = "DoNotEnforce" }
+        Deploy-VM-ChangeTrack    = { enforcement_mode = "DoNotEnforce" }
+        Deploy-VM-Monitoring     = { enforcement_mode = "DoNotEnforce" }
+        Deploy-vmArc-ChangeTrack = { enforcement_mode = "DoNotEnforce" }
+        Deploy-vmHybr-Monitoring = { enforcement_mode = "DoNotEnforce" }
+        Deploy-VMSS-ChangeTrack  = { enforcement_mode = "DoNotEnforce" }
+        Deploy-VMSS-Monitoring   = { enforcement_mode = "DoNotEnforce" }
+        Enable-AUM-CheckUpdates  = { enforcement_mode = "DoNotEnforce" }
+        Enable-DDoS-VNET         = { enforcement_mode = "DoNotEnforce" }
+        Enforce-AKS-HTTPS        = { enforcement_mode = "DoNotEnforce" }
+        Enforce-ASR              = { enforcement_mode = "DoNotEnforce" }
+        Enforce-GR-KeyVault      = { enforcement_mode = "DoNotEnforce" }
+        Enforce-Subnet-Private   = { enforcement_mode = "DoNotEnforce" }
+        Enforce-TLS-SSL-H224     = { enforcement_mode = "DoNotEnforce" }
+        Enforce-TLS-SSL-Q225     = { enforcement_mode = "DoNotEnforce" }
+        Inherit-RG-Tags          = { enforcement_mode = "DoNotEnforce" } # Custom Policy
+        Enforce-VM-Tags          = { enforcement_mode = "DoNotEnforce" } # Custom Policy
+        Enforce-RG-Tags          = { enforcement_mode = "DoNotEnforce" } # Custom Policy
+      }
+    }
+    corp = {
+      policy_assignments = {
+        Audit-PeDnsZones         = { enforcement_mode = "DoNotEnforce" }
+        Deny-HybridNetworking    = { enforcement_mode = "DoNotEnforce" }
+        Deny-Public-Endpoints    = { enforcement_mode = "DoNotEnforce" }
+        Deny-Public-IP-On-NIC    = { enforcement_mode = "DoNotEnforce" }
+        Deploy-Private-DNS-Zones = { enforcement_mode = "DoNotEnforce" }
+      }
+    }
+    # Online archetype has no policy assignments
+    online = {
+      policy_assignments = {}
+    }
+    sandbox = {
+      policy_assignments = {
+        Enforce-ALZ-Sandbox = { enforcement_mode = "DoNotEnforce" }
+      }
+    }
+    # Management archetype has no policy assignments
+    management = {
+      policy_assignments = {}
     }
     connectivity = {
       policy_assignments = {
         Enable-DDoS-VNET = {
           enforcement_mode = "DoNotEnforce"
         }
+      }
+    }
+    identity = {
+      policy_assignments = {
+        Deny-MgmtPorts-Internet = { enforcement_mode = "DoNotEnforce" }
+        Deny-Public-IP          = { enforcement_mode = "DoNotEnforce" }
+        Deny-Subnet-Without-Nsg = { enforcement_mode = "DoNotEnforce" }
+        Deploy-VM-Backup        = { enforcement_mode = "DoNotEnforce" }
+      }
+    }
+    decommissioned = {
+      policy_assignments = {
+        Enforce-ALZ-Decomm = { enforcement_mode = "DoNotEnforce" }
       }
     }
     # Example of how to update a policy assignment enforcement mode for Private Link DNS Zones
