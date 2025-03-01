@@ -14,7 +14,7 @@ module "management_groups" {
     ddos_protection_plan_id                     = null
     private_dns_zone_subscription_id            = var.subscription_id_connectivity
     private_dns_zone_region                     = var.location
-    private_dns_zone_resource_group_name        = "rg-dns-hub" # TBC
+    private_dns_zone_resource_group_name        = "rg-dns-hub-01" # TBC
   }
   policy_assignments_to_modify = {
     alz = {

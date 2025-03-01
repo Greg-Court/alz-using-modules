@@ -35,7 +35,7 @@ module "hub_and_spoke_vnet" {
         subnets = {}
         firewall = {
           subnet_address_prefix = "10.0.0.0/26"
-          name                  = "fw-hub-${var.loc}"
+          name                  = "fw-hub-${var.loc}-01"
           sku_name              = "AZFW_VNet"
           sku_tier              = "Standard"
           zones = ["1", "2", "3"]
@@ -53,22 +53,22 @@ module "hub_and_spoke_vnet" {
 
       virtual_network_gateways = {
         subnet_address_prefix = "10.0.0.128/27"
-        express_route = {
-          location = var.location
-          name     = "vgw-hub-er-${var.loc}"
-          sku      = "ErGw2AZ"
-          ip_configurations = {
-            default = {
-              public_ip = {
-                name  = "pip-vgw-hub-er-${var.loc}"
-                zones = ["1", "2", "3"]
-              }
-            }
-          }
-        }
+        # express_route = {
+        #   location = var.location
+        #   name     = "vgw-hub-er-${var.loc}-01"
+        #   sku      = "ErGw2AZ"
+        #   ip_configurations = {
+        #     default = {
+        #       public_ip = {
+        #         name  = "pip-vgw-hub-er-${var.loc}-01"
+        #         zones = ["1", "2", "3"]
+        #       }
+        #     }
+        #   }
+        # }
         vpn = {
           location = var.location
-          name     = "vgw-hub-vpn-${var.loc}"
+          name     = "vgw-hub-vpn-${var.loc}-01"
           sku = "VpnGw2AZ"
           ip_configurations = {
             active_active_1 = {
@@ -92,17 +92,17 @@ module "hub_and_spoke_vnet" {
         auto_registration_zone_enabled = true
         auto_registration_zone_name    = "uks.azure.local"
         subnet_address_prefix          = "10.0.0.160/28"
-        private_dns_resolver = {
-          name = "pdr-hub-dns-${var.loc}"
-        }
+        # private_dns_resolver = {
+        #   name = "pdr-hub-dns-${var.loc}-01"
+        # }
       }
       bastion = {
         subnet_address_prefix = "10.0.0.64/26"
         bastion_host = {
-          name = "bas-hub-${var.loc}"
+          name = "bas-hub-${var.loc}-01"
         }
         bastion_public_ip = {
-          name  = "pip-bastion-hub-${var.loc}"
+          name  = "pip-bas-hub-${var.loc}-01"
           zones = []
         }
       }
