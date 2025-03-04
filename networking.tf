@@ -103,6 +103,10 @@ module "hub_and_spoke_vnet" {
         ]
         autoregistration_zone = "az.internal"
       }
+      # azure_dns_private_resolver = { # TODO!
+      #   name = "pdr-hub-${var.loc}-01"
+      #   subnet_address_prefix = "10.0.1.0/26"
+      # }
       # bastion = {
       #   sku                   = "Basic"
       #   resource_group_name   = azurerm_resource_group.bastion_primary.name
