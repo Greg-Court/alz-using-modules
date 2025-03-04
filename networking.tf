@@ -61,7 +61,7 @@ module "hub_and_spoke_vnet" {
         vpn = {
           location = var.location
           name     = "vgw-hub-vpn-${var.loc}-01"
-          sku      = "VpnGw1AZ"
+          sku      = "VpnGw1"
           ip_configurations = {
             active_active_1 = {
               public_ip = {

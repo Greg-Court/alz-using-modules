@@ -43,6 +43,9 @@ module "hub_networks" {
           AzureBastionSubnet = {
             name             = "AzureBastionSubnet"
             address_prefixes = [each.value.bastion.subnet_address_prefix]
+            route_table = {
+              assign_generated_route_table = false
+            }
           }
         } : {}
       )
