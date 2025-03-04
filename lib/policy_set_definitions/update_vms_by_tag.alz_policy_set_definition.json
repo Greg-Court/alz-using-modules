@@ -7,23 +7,23 @@
     "displayName": "Update VMs based on Patch Group",
     "description": "Update VMs based on Patch Group",
     "metadata": {
-      "version": "1.0.0",
+      "version": "2.0.0",
       "category": "General"
     },
     "parameters": {},
     "policyDefinitions": [
       {
-        "policyDefinitionReferenceId": "Update-VMs-PatchGroup-1",
+        "policyDefinitionReferenceId": "Update-VMs-Mon-All",
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-ne/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-01"
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-mon-all-uks-01"
           },
           "tagValues": {
             "value": [
               {
                 "key": "PatchGroup",
-                "value": "1"
+                "value": "Mon-All"
               }
             ]
           },
@@ -33,17 +33,17 @@
         }
       },
       {
-        "policyDefinitionReferenceId": "Update-VMs-PatchGroup-2",
+        "policyDefinitionReferenceId": "Update-VMs-Mon-Sec-Crit",
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-02"
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-mon-sec-crit-uks-01"
           },
           "tagValues": {
             "value": [
               {
                 "key": "PatchGroup",
-                "value": "2"
+                "value": "Mon-Sec-Crit"
               }
             ]
           },
@@ -53,17 +53,17 @@
         }
       },
       {
-        "policyDefinitionReferenceId": "Update-VMs-PatchGroup-3",
+        "policyDefinitionReferenceId": "Update-VMs-Mon-All-NoReboot",
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-03"
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-mon-all-noreboot-uks-01"
           },
           "tagValues": {
             "value": [
               {
                 "key": "PatchGroup",
-                "value": "3"
+                "value": "Mon-All-NoReboot"
               }
             ]
           },
@@ -73,17 +73,17 @@
         }
       },
       {
-        "policyDefinitionReferenceId": "Update-VMs-PatchGroup-1-NoReboot",
+        "policyDefinitionReferenceId": "Update-VMs-Mon-Sec-Crit-NoReboot",
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-noreboot-mgmt-ne-01"
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-mon-sec-crit-noreboot-uks-01"
           },
           "tagValues": {
             "value": [
               {
                 "key": "PatchGroup",
-                "value": "1_NoReboot"
+                "value": "Mon-Sec-Crit-NoReboot"
               }
             ]
           },
@@ -93,17 +93,17 @@
         }
       },
       {
-        "policyDefinitionReferenceId": "Update-VMs-PatchGroup-2-NoReboot",
+        "policyDefinitionReferenceId": "Update-VMs-Tue-All",
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-noreboot-mgmt-ne-02"
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-tue-all-uks-01"
           },
           "tagValues": {
             "value": [
               {
                 "key": "PatchGroup",
-                "value": "2_NoReboot"
+                "value": "Tue-All"
               }
             ]
           },
@@ -113,17 +113,17 @@
         }
       },
       {
-        "policyDefinitionReferenceId": "Update-VMs-PatchGroup-3-NoReboot",
+        "policyDefinitionReferenceId": "Update-VMs-Tue-Sec-Crit",
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-noreboot-mgmt-ne-03"
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-tue-sec-crit-uks-01"
           },
           "tagValues": {
             "value": [
               {
                 "key": "PatchGroup",
-                "value": "3_NoReboot"
+                "value": "Tue-Sec-Crit"
               }
             ]
           },
@@ -133,17 +133,17 @@
         }
       },
       {
-        "policyDefinitionReferenceId": "Update-VMs-PatchGroup-1-AlwaysReboot",
+        "policyDefinitionReferenceId": "Update-VMs-Tue-All-NoReboot",
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-01"
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-tue-all-noreboot-uks-01"
           },
           "tagValues": {
             "value": [
               {
                 "key": "PatchGroup",
-                "value": "1_AlwaysReboot"
+                "value": "Tue-All-NoReboot"
               }
             ]
           },
@@ -153,17 +153,17 @@
         }
       },
       {
-        "policyDefinitionReferenceId": "Update-VMs-PatchGroup-2-AlwaysReboot",
+        "policyDefinitionReferenceId": "Update-VMs-Tue-Sec-Crit-NoReboot",
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-02"
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-tue-sec-crit-noreboot-uks-01"
           },
           "tagValues": {
             "value": [
               {
                 "key": "PatchGroup",
-                "value": "2_AlwaysReboot"
+                "value": "Tue-Sec-Crit-NoReboot"
               }
             ]
           },
@@ -173,17 +173,397 @@
         }
       },
       {
-        "policyDefinitionReferenceId": "Update-VMs-PatchGroup-3-AlwaysReboot",
+        "policyDefinitionReferenceId": "Update-VMs-Wed-All",
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-ne-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-vm-rebootifreq-mgmt-ne-03"
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-wed-all-uks-01"
           },
           "tagValues": {
             "value": [
               {
                 "key": "PatchGroup",
-                "value": "3_AlwaysReboot"
+                "value": "Wed-All"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-Wed-Sec-Crit",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-wed-sec-crit-uks-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "Wed-Sec-Crit"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-Wed-All-NoReboot",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-wed-all-noreboot-uks-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "Wed-All-NoReboot"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-Wed-Sec-Crit-NoReboot",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-wed-sec-crit-noreboot-uks-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "Wed-Sec-Crit-NoReboot"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-Thu-All",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-thu-all-uks-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "Thu-All"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-Thu-Sec-Crit",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-thu-sec-crit-uks-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "Thu-Sec-Crit"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-Thu-All-NoReboot",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-thu-all-noreboot-uks-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "Thu-All-NoReboot"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-Thu-Sec-Crit-NoReboot",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-thu-sec-crit-noreboot-uks-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "Thu-Sec-Crit-NoReboot"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-Fri-All",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-fri-all-uks-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "Fri-All"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-Fri-Sec-Crit",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-fri-sec-crit-uks-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "Fri-Sec-Crit"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-Fri-All-NoReboot",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-fri-all-noreboot-uks-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "Fri-All-NoReboot"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-Fri-Sec-Crit-NoReboot",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-fri-sec-crit-noreboot-uks-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "Fri-Sec-Crit-NoReboot"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-Sat-All",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sat-all-uks-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "Sat-All"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-Sat-Sec-Crit",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sat-sec-crit-uks-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "Sat-Sec-Crit"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-Sat-All-NoReboot",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sat-all-noreboot-uks-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "Sat-All-NoReboot"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-Sat-Sec-Crit-NoReboot",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sat-sec-crit-noreboot-uks-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "Sat-Sec-Crit-NoReboot"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-Sun-All",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sun-all-uks-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "Sun-All"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-Sun-Sec-Crit",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sun-sec-crit-uks-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "Sun-Sec-Crit"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-Sun-All-NoReboot",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sun-all-noreboot-uks-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "Sun-All-NoReboot"
+              }
+            ]
+          },
+          "tagOperator": {
+            "value": "Any"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "Update-VMs-Sun-Sec-Crit-NoReboot",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "parameters": {
+          "maintenanceConfigurationResourceId": {
+            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sun-sec-crit-noreboot-uks-01"
+          },
+          "tagValues": {
+            "value": [
+              {
+                "key": "PatchGroup",
+                "value": "Sun-Sec-Crit-NoReboot"
               }
             ]
           },
@@ -192,7 +572,6 @@
           }
         }
       }
-    ],
-    "policyDefinitionGroups": []
+    ]
   }
 }

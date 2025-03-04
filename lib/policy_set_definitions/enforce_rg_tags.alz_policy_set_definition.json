@@ -20,13 +20,7 @@
             "value": "BusinessUnit"
           },
           "tagValues": {
-            "value": [
-              "Infosec",
-              "IT Apps",
-              "DIP",
-              "AI Ops",
-              "Business Engagement"
-            ]
+            "value": ["TBC"]
           }
         }
       },
@@ -50,18 +44,7 @@
             "value": "Team"
           },
           "tagValues": {
-            "value": [
-              "Info_Security",
-              "Cyber_Security",
-              "Salesforce",
-              "Workday",
-              "M365",
-              "Infra",
-              "Software_Dev",
-              "Data_Engineer",
-              "Power BI",
-              "Data_Scientist"
-            ]
+            "value": ["TBC"]
           }
         }
       },
@@ -73,7 +56,7 @@
             "value": "CostCenter"
           },
           "tagValues": {
-            "value": ["IT"]
+            "value": ["TBC"]
           }
         }
       },
