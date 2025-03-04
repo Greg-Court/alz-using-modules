@@ -14,7 +14,7 @@
     "policyDefinitions": [
       {
         "policyDefinitionReferenceId": "Enforce-VM-Backup-Tag",
-        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Enforce-VM-Tag-and-Values",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/Enforce-VM-Tag-and-Values",
         "parameters": {
           "tagName": {
             "value": "Backup"
@@ -45,7 +45,7 @@
       },
       {
         "policyDefinitionReferenceId": "Enforce-VM-PatchGrp-Tag",
-        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Enforce-VM-Tag-and-Values",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/Enforce-VM-Tag-and-Values",
         "parameters": {
           "tagName": {
             "value": "PatchGroup"

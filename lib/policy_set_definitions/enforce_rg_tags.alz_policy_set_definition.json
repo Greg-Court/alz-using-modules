@@ -14,7 +14,7 @@
     "policyDefinitions": [
       {
         "policyDefinitionReferenceId": "Enforce-BusinessUnit-Tag",
-        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag-and-Values",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag-and-Values",
         "parameters": {
           "tagName": {
             "value": "BusinessUnit"
@@ -26,7 +26,7 @@
       },
       {
         "policyDefinitionReferenceId": "Enforce-Env-Tag",
-        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag-and-Values",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag-and-Values",
         "parameters": {
           "tagName": {
             "value": "Env"
@@ -38,7 +38,7 @@
       },
       {
         "policyDefinitionReferenceId": "Enforce-Team-Tag",
-        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag-and-Values",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag-and-Values",
         "parameters": {
           "tagName": {
             "value": "Team"
@@ -50,7 +50,7 @@
       },
       {
         "policyDefinitionReferenceId": "Enforce-CostCenter-Tag",
-        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag-and-Values",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag-and-Values",
         "parameters": {
           "tagName": {
             "value": "CostCenter"
@@ -62,7 +62,7 @@
       },
       {
         "policyDefinitionReferenceId": "Enforce-Workload-Tag",
-        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag",
         "parameters": {
           "tagName": {
             "value": "Workload"
@@ -71,7 +71,7 @@
       },
       {
         "policyDefinitionReferenceId": "Enforce-Owner-Tag",
-        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag",
         "parameters": {
           "tagName": {
             "value": "Owner"
@@ -80,7 +80,7 @@
       },
       {
         "policyDefinitionReferenceId": "Enforce-Description-Tag",
-        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/Enforce-RG-Tag",
         "parameters": {
           "tagName": {
             "value": "Description"
