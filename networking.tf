@@ -66,13 +66,15 @@ module "hub_and_spoke_vnet" {
             active_active_1 = {
               public_ip = {
                 name  = "pip-vgw-hub-vpn-${var.loc}-01"
-                zones = ["1", "2", "3"]
+                # zones = ["1", "2", "3"]
+                zones = []
               }
             }
             active_active_2 = {
               public_ip = {
                 name  = "pip-vgw-hub-vpn-${var.loc}-02"
-                zones = ["1", "2", "3"]
+                # zones = ["1", "2", "3"]
+                zones = []
               }
             }
           }

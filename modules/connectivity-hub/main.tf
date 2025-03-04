@@ -176,7 +176,7 @@ module "private_dns_zones" {
     "link-${local.hub_networks[each.value.hub_key].virtual_network.name}" = {
       vnetlinkname     = "link-${local.hub_networks[each.value.hub_key].virtual_network.name}"
       vnetid           = local.hub_networks[each.value.hub_key].virtual_network.id
-      autoregistration = true
+      autoregistration = false
       tags             = var.tags
     }
   }
