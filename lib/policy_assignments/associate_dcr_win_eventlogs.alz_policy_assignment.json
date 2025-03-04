@@ -11,7 +11,7 @@
     ],
     "parameters": {
       "dcrResourceId": {
-        "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-mon-uks-01/providers/Microsoft.Insights/dataCollectionRules/dcr-winevents-uks-01"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-mon-uks-01/providers/Microsoft.Insights/dataCollectionRules/dcr-winevents-uks-01"
       },
       "scopeToSupportedImages": {
         "value": false
