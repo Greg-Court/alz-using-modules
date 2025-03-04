@@ -58,27 +58,27 @@ module "hub_and_spoke_vnet" {
 
       virtual_network_gateways = {
         subnet_address_prefix = "10.0.0.128/26"
-        vpn = {
-          location = var.location
-          name     = "vgw-hub-vpn-${var.loc}-01"
-          sku      = "VpnGw1"
-          ip_configurations = {
-            active_active_1 = {
-              public_ip = {
-                name  = "pip-vgw-hub-vpn-${var.loc}-01"
-                # zones = ["1", "2", "3"]
-                zones = []
-              }
-            }
-            active_active_2 = {
-              public_ip = {
-                name  = "pip-vgw-hub-vpn-${var.loc}-02"
-                # zones = ["1", "2", "3"]
-                zones = []
-              }
-            }
-          }
-        }
+        # vpn = {
+        #   location = var.location
+        #   name     = "vgw-hub-vpn-${var.loc}-01"
+        #   sku      = "VpnGw1"
+        #   ip_configurations = {
+        #     active_active_1 = {
+        #       public_ip = {
+        #         name  = "pip-vgw-hub-vpn-${var.loc}-01"
+        #         # zones = ["1", "2", "3"]
+        #         zones = []
+        #       }
+        #     }
+        #     active_active_2 = {
+        #       public_ip = {
+        #         name  = "pip-vgw-hub-vpn-${var.loc}-02"
+        #         # zones = ["1", "2", "3"]
+        #         zones = []
+        #       }
+        #     }
+        #   }
+        # }
         # express_route = {
         #   location = var.location
         #   name     = "vgw-hub-er-${var.loc}-01"
