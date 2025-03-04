@@ -10,9 +10,7 @@
       "version": "1.0.0",
       "category": "General"
     },
-    "parameters": {
-      "effect": {}
-    },
+    "parameters": {},
     "policyDefinitions": [
       {
         "policyDefinitionReferenceId": "Inherit-RG-Tags-BusinessUnit",
