@@ -8,7 +8,7 @@ module "management_groups" {
     for param_name, param_value in local.management_groups.policy_default_values :
     param_name => jsonencode({ value = param_value })
   }
-  policy_assignments_to_modify = { for management_group_key, management_group_value in try(var.management_group_settings.policy_assignments_to_modify, {}) : management_group_key => {
+  policy_assignments_to_modify = { for management_group_key, management_group_value in local.policy_assignments_to_modify : management_group_key => {
     policy_assignments = { for policy_assignment_key, policy_assignment_value in management_group_value.policy_assignments : policy_assignment_key => {
       enforcement_mode        = try(policy_assignment_value.enforcement_mode, null)
       identity                = try(policy_assignment_value.identity, null)
@@ -128,7 +128,7 @@ locals {
             enableAscForCspm                            = "DoNotEnforce"
           }
         }
-        Allowed-Locations = { # allowed_locations.alz_policy_assignment.json
+        Allowed-Locations = {
           enforcement_mode = "DoNotEnforce"
           parameters = {
             listOfAllowedLocations = [
@@ -137,7 +137,7 @@ locals {
             ]
           }
         }
-        Allowed-RG-Locations = { # allowed_locations_resource_groups.alz_policy_assignment.json
+        Allowed-RG-Locations = {
           enforcement_mode = "DoNotEnforce"
           parameters = {
             listOfAllowedLocations = [
@@ -180,7 +180,7 @@ locals {
         Deploy-MDFC-DefSQL-AMA   = { enforcement_mode = "DoNotEnforce" }
         Deploy-SQL-TDE           = { enforcement_mode = "DoNotEnforce" }
         Deploy-SQL-Threat        = { enforcement_mode = "DoNotEnforce" }
-        Deploy-VM-Backup         = { enforcement_mode = "DoNotEnforce" }
+        # Deploy-VM-Backup         = { enforcement_mode = "DoNotEnforce" } # removed this assignment entirely
         Deploy-VM-ChangeTrack    = { enforcement_mode = "DoNotEnforce" }
         Deploy-VM-Monitoring     = { enforcement_mode = "DoNotEnforce" }
         Deploy-vmArc-ChangeTrack = { enforcement_mode = "DoNotEnforce" }
@@ -188,7 +188,7 @@ locals {
         Deploy-VMSS-ChangeTrack  = { enforcement_mode = "DoNotEnforce" }
         Deploy-VMSS-Monitoring   = { enforcement_mode = "DoNotEnforce" }
         Enable-AUM-CheckUpdates  = { enforcement_mode = "DoNotEnforce" }
-        Enable-DDoS-VNET         = { enforcement_mode = "DoNotEnforce" }
+        # Enable-DDoS-VNET         = { enforcement_mode = "DoNotEnforce" } # removed this assignment entirely
         Enforce-AKS-HTTPS        = { enforcement_mode = "DoNotEnforce" }
         Enforce-ASR              = { enforcement_mode = "DoNotEnforce" }
         Enforce-GR-KeyVault      = { enforcement_mode = "DoNotEnforce" }
@@ -232,7 +232,7 @@ locals {
         Deny-MgmtPorts-Internet = { enforcement_mode = "DoNotEnforce" }
         Deny-Public-IP          = { enforcement_mode = "DoNotEnforce" }
         Deny-Subnet-Without-Nsg = { enforcement_mode = "DoNotEnforce" }
-        Deploy-VM-Backup        = { enforcement_mode = "DoNotEnforce" }
+        # Deploy-VM-Backup        = { enforcement_mode = "DoNotEnforce" } # removed this assignment entirely
       }
     }
     contoso-decommissioned = {
