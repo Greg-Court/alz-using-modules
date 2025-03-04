@@ -114,21 +114,22 @@ locals {
             ascExportResourceGroupLocation = var.location
             emailSecurityContact           = "replace.me@placeholder.com"
             # change to DeployIfNotExists later
-            enableAscForServers                         = "DoNotEnforce"
-            enableAscForServersVulnerabilityAssessments = "DoNotEnforce"
-            enableAscForSql                             = "DoNotEnforce"
-            enableAscForAppServices                     = "DoNotEnforce"
-            enableAscForStorage                         = "DoNotEnforce"
-            enableAscForContainers                      = "DoNotEnforce"
-            enableAscForKeyVault                        = "DoNotEnforce"
-            enableAscForSqlOnVm                         = "DoNotEnforce"
-            enableAscForArm                             = "DoNotEnforce"
-            enableAscForOssDb                           = "DoNotEnforce"
-            enableAscForCosmosDbs                       = "DoNotEnforce"
-            enableAscForCspm                            = "DoNotEnforce"
+            enableAscForServers                         = "Disabled"
+            enableAscForServersVulnerabilityAssessments = "Disabled"
+            enableAscForSql                             = "Disabled"
+            enableAscForAppServices                     = "Disabled"
+            enableAscForStorage                         = "Disabled"
+            enableAscForContainers                      = "Disabled"
+            enableAscForKeyVault                        = "Disabled"
+            enableAscForSqlOnVm                         = "Disabled"
+            enableAscForArm                             = "Disabled"
+            enableAscForOssDb                           = "Disabled"
+            enableAscForCosmosDbs                       = "Disabled"
+            enableAscForCspm                            = "Disabled"
           }
         }
-        Allowed-Locations = {
+        Inherit-RG-Tags          = { enforcement_mode = "DoNotEnforce" } # Custom Policy
+        Allowed-Locations = { # Custom Policy
           enforcement_mode = "DoNotEnforce"
           parameters = {
             listOfAllowedLocations = [
@@ -137,7 +138,7 @@ locals {
             ]
           }
         }
-        Allowed-RG-Locations = {
+        Allowed-RG-Locations = { # Custom Policy
           enforcement_mode = "DoNotEnforce"
           parameters = {
             listOfAllowedLocations = [
@@ -162,7 +163,6 @@ locals {
         Enforce-ASR              = { enforcement_mode = "DoNotEnforce" }
         Enforce-GR-KeyVault      = { enforcement_mode = "DoNotEnforce" }
         Enforce-Subnet-Private   = { enforcement_mode = "DoNotEnforce" }
-        Inherit-RG-Tags          = { enforcement_mode = "DoNotEnforce" } # Custom Policy
         Enforce-VM-Tags          = { enforcement_mode = "DoNotEnforce" } # Custom Policy
         Enforce-RG-Tags          = { enforcement_mode = "DoNotEnforce" } # Custom Policy
       }
@@ -193,9 +193,7 @@ locals {
         Enforce-ASR              = { enforcement_mode = "DoNotEnforce" }
         Enforce-GR-KeyVault      = { enforcement_mode = "DoNotEnforce" }
         Enforce-Subnet-Private   = { enforcement_mode = "DoNotEnforce" }
-        Enforce-TLS-SSL-H224     = { enforcement_mode = "DoNotEnforce" }
         Enforce-TLS-SSL-Q225     = { enforcement_mode = "DoNotEnforce" }
-        Inherit-RG-Tags          = { enforcement_mode = "DoNotEnforce" } # Custom Policy
         Enforce-VM-Tags          = { enforcement_mode = "DoNotEnforce" } # Custom Policy
         Enforce-RG-Tags          = { enforcement_mode = "DoNotEnforce" } # Custom Policy
       }
