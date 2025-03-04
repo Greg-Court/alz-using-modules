@@ -37,6 +37,9 @@ module "hub_networks" {
           GatewaySubnet = {
             name             = "GatewaySubnet"
             address_prefixes = [each.value.virtual_network_gateways.subnet_address_prefix]
+            route_table = {
+              assign_generated_route_table = false
+            }
           }
         } : {},
         lookup(each.value, "bastion", null) != null ? {

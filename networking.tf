@@ -30,30 +30,30 @@ module "hub_and_spoke_vnet" {
         route_table_name_user_subnets = "rt-hub-std-${var.loc}-01"
         ddos_protection_plan_id       = null
         subnets                       = {}
-        firewall = {
-          subnet_address_prefix = "10.0.0.0/26"
-          name                  = "fw-hub-${var.loc}-01"
-          sku_name              = "AZFW_VNet"
-          sku_tier              = "Basic"
-          zones                 = ["1", "2", "3"]
-          default_ip_configuration = {
-            public_ip_config = {
-              name  = "pip-fw-hub-${var.loc}-01"
-              zones = ["1", "2", "3"]
-            }
-          }
-          management_subnet_address_prefix = "10.0.0.192/26" # only required if Basic SKU
-          management_ip_configuration = {                    # only required if Basic SKU
-            name = "myManagementIp"
-            public_ip_config = {
-              name  = "fw-hub-mgmt-${var.loc}-01"
-              zones = ["1", "2", "3"]
-            }
-          }
-          firewall_policy = {
-            name = "fwp-hub-${var.loc}-01"
-          }
-        }
+        # firewall = {
+        #   subnet_address_prefix = "10.0.0.0/26"
+        #   name                  = "fw-hub-${var.loc}-01"
+        #   sku_name              = "AZFW_VNet"
+        #   sku_tier              = "Standard"
+        #   zones                 = ["1", "2", "3"]
+        #   default_ip_configuration = {
+        #     public_ip_config = {
+        #       name  = "pip-fw-hub-${var.loc}-01"
+        #       zones = ["1", "2", "3"]
+        #     }
+        #   }
+        #   # management_subnet_address_prefix = "10.0.0.192/26" # only required if Basic SKU
+        #   # management_ip_configuration = {                    # only required if Basic SKU
+        #   #   name = "myManagementIp"
+        #   #   public_ip_config = {
+        #   #     name  = "fw-hub-mgmt-${var.loc}-01"
+        #   #     zones = ["1", "2", "3"]
+        #   #   }
+        #   # }
+        #   firewall_policy = {
+        #     name = "fwp-hub-${var.loc}-01"
+        #   }
+        # }
       }
 
       virtual_network_gateways = {

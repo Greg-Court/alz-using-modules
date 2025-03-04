@@ -39,6 +39,7 @@ variable "hub_virtual_networks" {
           name = optional(string)
           sku  = optional(string)
         }))
+        firewall_policy_id = optional(string)
       }))
     })
     virtual_network_gateways = optional(object({
