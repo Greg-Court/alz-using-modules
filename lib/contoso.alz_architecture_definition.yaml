@@ -33,7 +33,7 @@ management_groups:
     display_name: "App"
     archetypes:
       - app
-    parent_id: contos-corp
+    parent_id: contoso-corp
     exists: false
 
   - id: contoso-data
