@@ -180,7 +180,7 @@ locals {
         Deploy-MDFC-DefSQL-AMA   = { enforcement_mode = "DoNotEnforce" }
         Deploy-SQL-TDE           = { enforcement_mode = "DoNotEnforce" }
         Deploy-SQL-Threat        = { enforcement_mode = "DoNotEnforce" }
-        # Deploy-VM-Backup         = { enforcement_mode = "DoNotEnforce" } # removed this assignment entirely
+        # Deploy-VM-Backup         = { enforcement_mode = "DoNotEnforce" } # removed
         Deploy-VM-ChangeTrack    = { enforcement_mode = "DoNotEnforce" }
         Deploy-VM-Monitoring     = { enforcement_mode = "DoNotEnforce" }
         Deploy-vmArc-ChangeTrack = { enforcement_mode = "DoNotEnforce" }
@@ -188,7 +188,7 @@ locals {
         Deploy-VMSS-ChangeTrack  = { enforcement_mode = "DoNotEnforce" }
         Deploy-VMSS-Monitoring   = { enforcement_mode = "DoNotEnforce" }
         Enable-AUM-CheckUpdates  = { enforcement_mode = "DoNotEnforce" }
-        # Enable-DDoS-VNET         = { enforcement_mode = "DoNotEnforce" } # removed this assignment entirely
+        # Enable-DDoS-VNET         = { enforcement_mode = "DoNotEnforce" } # removed
         Enforce-AKS-HTTPS        = { enforcement_mode = "DoNotEnforce" }
         Enforce-ASR              = { enforcement_mode = "DoNotEnforce" }
         Enforce-GR-KeyVault      = { enforcement_mode = "DoNotEnforce" }
@@ -220,7 +220,7 @@ locals {
     }
     contoso-connectivity = {
       policy_assignments = {
-        # Enable-DDoS-VNET = { enforcement_mode = "DoNotEnforce"} # removed this assignment entirely
+        # Enable-DDoS-VNET = { enforcement_mode = "DoNotEnforce"} # removed
       }
     }
     contoso-identity = {
@@ -228,7 +228,7 @@ locals {
         Deny-MgmtPorts-Internet = { enforcement_mode = "DoNotEnforce" }
         Deny-Public-IP          = { enforcement_mode = "DoNotEnforce" }
         Deny-Subnet-Without-Nsg = { enforcement_mode = "DoNotEnforce" }
-        # Deploy-VM-Backup        = { enforcement_mode = "DoNotEnforce" } # removed this assignment entirely
+        # Deploy-VM-Backup        = { enforcement_mode = "DoNotEnforce" } # removed
       }
     }
     contoso-decommissioned = {
