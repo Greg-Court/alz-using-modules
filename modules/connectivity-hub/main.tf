@@ -187,33 +187,7 @@ module "private_dns_zones" {
 }
 
 
-# Deploy private DNS zones with autoregistration for each hub
-module "private_dns_autoregistration_zones" {
-  source  = "Azure/avm-res-network-privatednszone/azurerm"
-  version = "0.3.2"
-  
-  for_each = {
-    for hub_key, hub_config in var.hub_virtual_networks : hub_key => hub_config
-    if lookup(hub_config, "private_dns_autoregistration", null) != null
-  }
-  
-  domain_name         = each.value.private_dns_autoregistration.zone_name
-  resource_group_name = each.value.private_dns_autoregistration.resource_group_name
-  
-  virtual_network_links = {
-    "link-${local.hub_networks[each.key].virtual_network.name}" = {
-      vnetlinkname     = "link-${local.hub_networks[each.key].virtual_network.name}"
-      vnetid           = local.hub_networks[each.key].virtual_network.id
-      autoregistration = true
-      tags             = var.tags
-    }
-  }
-  
-  tags = var.tags
-  
-  depends_on = [module.hub_networks]
-}
-
+# Deploy a private DNS zone with autoregistration for each hub
 module "private_dns_autoregistration_zones" {
   source  = "Azure/avm-res-network-privatednszone/azurerm"
   version = "0.3.2"
