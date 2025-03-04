@@ -1,7 +1,7 @@
 module "management_groups" {
   source             = "Azure/avm-ptn-alz/azurerm"
   version            = "0.11.1"
-  architecture_name  = "alz"
+  architecture_name  = "contoso"
   parent_resource_id = var.root_parent_management_group_id
   location           = var.location
   policy_default_values = { # requires to be json encoded
@@ -27,15 +27,15 @@ module "management_groups" {
   subscription_placement = {
     identity = {
       subscription_id       = var.subscription_id_identity
-      management_group_name = "identity"
+      management_group_name = "contoso-identity"
     }
     connectivity = {
       subscription_id       = var.subscription_id_connectivity
-      management_group_name = "connectivity"
+      management_group_name = "contoso-connectivity"
     }
     management = {
       subscription_id       = var.subscription_id_management
-      management_group_name = "management"
+      management_group_name = "contoso-management"
     }
   }
   timeouts = local.management_groups.default_timeouts
@@ -106,7 +106,7 @@ locals {
 
 locals {
   policy_assignments_to_modify = {
-    alz = {
+    contoso-root = {
       policy_assignments = {
         Deploy-MDFC-Config-H224 = {
           parameters = {
@@ -148,7 +148,7 @@ locals {
         }
       }
     }
-    platform = {
+    contoso-platform = {
       policy_assignments = {
         DenyAction-DeleteUAMIAMA = { enforcement_mode = "DoNotEnforce" }
         Deploy-MDFC-DefSQL-AMA   = { enforcement_mode = "DoNotEnforce" }
@@ -167,7 +167,7 @@ locals {
         Enforce-RG-Tags          = { enforcement_mode = "DoNotEnforce" } # Custom Policy
       }
     }
-    landingzones = {
+    contoso-landingzones = {
       policy_assignments = {
         Audit-AppGW-WAF          = { enforcement_mode = "DoNotEnforce" }
         Deny-IP-forwarding       = { enforcement_mode = "DoNotEnforce" }
@@ -200,7 +200,7 @@ locals {
         Enforce-RG-Tags          = { enforcement_mode = "DoNotEnforce" } # Custom Policy
       }
     }
-    corp = {
+    contoso-corp = {
       policy_assignments = {
         Audit-PeDnsZones         = { enforcement_mode = "DoNotEnforce" }
         Deny-HybridNetworking    = { enforcement_mode = "DoNotEnforce" }
@@ -209,25 +209,25 @@ locals {
         Deploy-Private-DNS-Zones = { enforcement_mode = "DoNotEnforce" }
       }
     }
-    online = { # Online archetype has no policy assignments
+    contoso-online = { # Online archetype has no policy assignments
       policy_assignments = {}
     }
-    sandbox = {
+    contoso-sandbox = {
       policy_assignments = {
         Enforce-ALZ-Sandbox = { enforcement_mode = "DoNotEnforce" }
       }
     }
-    management = { # Management archetype has no policy assignments
+    contoso-management = { # Management archetype has no policy assignments
       policy_assignments = {}
     }
-    connectivity = {
+    contoso-connectivity = {
       policy_assignments = {
         Enable-DDoS-VNET = {
           enforcement_mode = "DoNotEnforce"
         }
       }
     }
-    identity = {
+    contoso-identity = {
       policy_assignments = {
         Deny-MgmtPorts-Internet = { enforcement_mode = "DoNotEnforce" }
         Deny-Public-IP          = { enforcement_mode = "DoNotEnforce" }
@@ -235,7 +235,7 @@ locals {
         Deploy-VM-Backup        = { enforcement_mode = "DoNotEnforce" }
       }
     }
-    decommissioned = {
+    contoso-decommissioned = {
       policy_assignments = {
         Enforce-ALZ-Decomm = { enforcement_mode = "DoNotEnforce" }
       }
