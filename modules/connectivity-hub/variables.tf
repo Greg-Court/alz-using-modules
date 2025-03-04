@@ -70,6 +70,7 @@ variable "hub_virtual_networks" {
     private_dns_zones = optional(object({
       resource_group_name = string
       private_dns_zones   = list(string)
+      autoregistration_zone = optional(string)
     }))
     bastion = optional(object({
       sku                   = string

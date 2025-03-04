@@ -101,6 +101,7 @@ module "hub_and_spoke_vnet" {
           "privatelink.queue.core.windows.net",
           "privatelink.table.core.windows.net"
         ]
+        autoregistration_zone = "az.internal"
       }
       # bastion = {
       #   sku                   = "Basic"
