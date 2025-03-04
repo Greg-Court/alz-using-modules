@@ -17,7 +17,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-mon-all-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-mon-all-uks-01"
           },
           "tagValues": {
             "value": [
@@ -37,7 +37,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-mon-sec-crit-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-mon-sec-crit-uks-01"
           },
           "tagValues": {
             "value": [
@@ -57,7 +57,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-mon-all-noreboot-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-mon-all-noreboot-uks-01"
           },
           "tagValues": {
             "value": [
@@ -77,7 +77,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-mon-sec-crit-noreboot-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-mon-sec-crit-noreboot-uks-01"
           },
           "tagValues": {
             "value": [
@@ -97,7 +97,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-tue-all-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-tue-all-uks-01"
           },
           "tagValues": {
             "value": [
@@ -117,7 +117,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-tue-sec-crit-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-tue-sec-crit-uks-01"
           },
           "tagValues": {
             "value": [
@@ -137,7 +137,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-tue-all-noreboot-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-tue-all-noreboot-uks-01"
           },
           "tagValues": {
             "value": [
@@ -157,7 +157,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-tue-sec-crit-noreboot-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-tue-sec-crit-noreboot-uks-01"
           },
           "tagValues": {
             "value": [
@@ -177,7 +177,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-wed-all-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-wed-all-uks-01"
           },
           "tagValues": {
             "value": [
@@ -197,7 +197,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-wed-sec-crit-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-wed-sec-crit-uks-01"
           },
           "tagValues": {
             "value": [
@@ -217,7 +217,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-wed-all-noreboot-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-wed-all-noreboot-uks-01"
           },
           "tagValues": {
             "value": [
@@ -237,7 +237,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-wed-sec-crit-noreboot-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-wed-sec-crit-noreboot-uks-01"
           },
           "tagValues": {
             "value": [
@@ -257,7 +257,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-thu-all-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-thu-all-uks-01"
           },
           "tagValues": {
             "value": [
@@ -277,7 +277,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-thu-sec-crit-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-thu-sec-crit-uks-01"
           },
           "tagValues": {
             "value": [
@@ -297,7 +297,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-thu-all-noreboot-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-thu-all-noreboot-uks-01"
           },
           "tagValues": {
             "value": [
@@ -317,7 +317,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-thu-sec-crit-noreboot-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-thu-sec-crit-noreboot-uks-01"
           },
           "tagValues": {
             "value": [
@@ -337,7 +337,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-fri-all-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-fri-all-uks-01"
           },
           "tagValues": {
             "value": [
@@ -357,7 +357,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-fri-sec-crit-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-fri-sec-crit-uks-01"
           },
           "tagValues": {
             "value": [
@@ -377,7 +377,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-fri-all-noreboot-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-fri-all-noreboot-uks-01"
           },
           "tagValues": {
             "value": [
@@ -397,7 +397,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-fri-sec-crit-noreboot-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-fri-sec-crit-noreboot-uks-01"
           },
           "tagValues": {
             "value": [
@@ -417,7 +417,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sat-all-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sat-all-uks-01"
           },
           "tagValues": {
             "value": [
@@ -437,7 +437,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sat-sec-crit-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sat-sec-crit-uks-01"
           },
           "tagValues": {
             "value": [
@@ -457,7 +457,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sat-all-noreboot-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sat-all-noreboot-uks-01"
           },
           "tagValues": {
             "value": [
@@ -477,7 +477,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sat-sec-crit-noreboot-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sat-sec-crit-noreboot-uks-01"
           },
           "tagValues": {
             "value": [
@@ -497,7 +497,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sun-all-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sun-all-uks-01"
           },
           "tagValues": {
             "value": [
@@ -517,7 +517,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sun-sec-crit-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sun-sec-crit-uks-01"
           },
           "tagValues": {
             "value": [
@@ -537,7 +537,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sun-all-noreboot-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sun-all-noreboot-uks-01"
           },
           "tagValues": {
             "value": [
@@ -557,7 +557,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
         "parameters": {
           "maintenanceConfigurationResourceId": {
-            "value": "/subscriptions/TODO/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sun-sec-crit-noreboot-uks-01"
+            "value": "/subscriptions/${var.subscription_id_management}/resourceGroups/rg-patch-mgmt-uks-01/providers/Microsoft.Maintenance/maintenanceConfigurations/mc-sun-sec-crit-noreboot-uks-01"
           },
           "tagValues": {
             "value": [
