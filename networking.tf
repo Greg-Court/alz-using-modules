@@ -17,7 +17,7 @@ resource "azurerm_resource_group" "bastion_primary" {
 }
 
 module "hub_and_spoke_vnet" {
-  source = "./modules/hub-and-spoke-vnet"
+  source = "./modules/connectivity-hub"
   hub_virtual_networks = {
     primary = {
       hub_virtual_network = {
@@ -94,10 +94,10 @@ module "hub_and_spoke_vnet" {
       private_dns_zones = {
         resource_group_name            = azurerm_resource_group.dns.name
         private_dns_zones = [
-          privatelink.blob.core.windows.net,
-          privatelink.file.core.windows.net,
-          privatelink.queue.core.windows.net,
-          privatelink.table.core.windows.net
+          "privatelink.blob.core.windows.net",
+          "privatelink.file.core.windows.net",
+          "privatelink.queue.core.windows.net",
+          "privatelink.table.core.windows.net"
         ]
       }
       bastion = {
