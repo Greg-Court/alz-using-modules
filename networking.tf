@@ -35,7 +35,7 @@ module "hub_and_spoke_vnet" {
         address_space                 = ["10.0.0.0/16"]
         routing_address_space         = ["10.0.0.0/16"]
         route_table_name_firewall     = "rt-hub-fw-${var.loc}-01"
-        route_table_name_user_subnets = "rt-hub-user-${var.loc}-01"
+        route_table_name_user_subnets = "rt-hub-std-${var.loc}-01"
         ddos_protection_plan_id       = null
         subnets                       = {}
         # firewall = {
