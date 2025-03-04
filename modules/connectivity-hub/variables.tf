@@ -84,24 +84,6 @@ variable "hub_virtual_networks" {
       })
     }))
   }))
-  
-  validation {
-    condition = alltrue([
-      for k, v in var.hub_virtual_networks : 
-      lookup(v, "virtual_network_gateways", null) == null || 
-      v.virtual_network_gateways.subnet_address_prefix != null
-    ])
-    error_message = "If virtual_network_gateways are defined, subnet_address_prefix must be provided."
-  }
-  
-  validation {
-    condition = alltrue([
-      for k, v in var.hub_virtual_networks : 
-      lookup(v, "bastion", null) == null || 
-      v.bastion.subnet_address_prefix != null
-    ])
-    error_message = "If bastion is defined, subnet_address_prefix must be provided."
-  }
 }
 
 variable "tags" {

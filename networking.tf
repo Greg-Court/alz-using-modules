@@ -92,7 +92,7 @@ module "hub_and_spoke_vnet" {
         # }
       }
       private_dns_zones = {
-        resource_group_name            = azurerm_resource_group.dns.name
+        resource_group_name = azurerm_resource_group.dns.name
         private_dns_zones = [
           "privatelink.blob.core.windows.net",
           "privatelink.file.core.windows.net",
@@ -100,18 +100,18 @@ module "hub_and_spoke_vnet" {
           "privatelink.table.core.windows.net"
         ]
       }
-      bastion = {
-        sku                   = "Basic"
-        resource_group_name   = azurerm_resource_group.bastion_primary.name
-        subnet_address_prefix = "10.0.0.64/26"
-        bastion_host = {
-          name = "bas-hub-${var.loc}-01"
-        }
-        bastion_public_ip = {
-          name  = "pip-bas-hub-${var.loc}-01"
-          zones = []
-        }
-      }
+      # bastion = {
+      #   sku                   = "Basic"
+      #   resource_group_name   = azurerm_resource_group.bastion_primary.name
+      #   subnet_address_prefix = "10.0.0.64/26"
+      #   bastion_host = {
+      #     name = "bas-hub-${var.loc}-01"
+      #   }
+      #   bastion_public_ip = {
+      #     name  = "pip-bas-hub-${var.loc}-01"
+      #     zones = []
+      #   }
+      # }
     }
   }
 
