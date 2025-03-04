@@ -222,9 +222,7 @@ locals {
     }
     contoso-connectivity = {
       policy_assignments = {
-        Enable-DDoS-VNET = {
-          enforcement_mode = "DoNotEnforce"
-        }
+        # Enable-DDoS-VNET = { enforcement_mode = "DoNotEnforce"} # removed this assignment entirely
       }
     }
     contoso-identity = {
