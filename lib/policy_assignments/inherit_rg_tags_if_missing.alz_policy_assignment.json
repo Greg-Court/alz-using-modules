@@ -3,8 +3,8 @@
   "type": "Microsoft.Authorization/policyAssignments",
   "apiVersion": "2024-04-01",
   "properties": {
-    "description": "Ensure tags are inherited from the resource group to the resources within it if missing.",
-    "displayName": "Inherit Resource Group Tags",
+    "description": "Ensure tags are inherited from the resource group to the resources within if missing.",
+    "displayName": "Inherit resource group tags",
     "notScopes": [],
     "parameters": {},
     "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/Inherit-RG-Tags",

@@ -1,70 +1,70 @@
 $schema: "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/main/schemas/architecture_definition.json"
 name: alz
 management_groups:
-  - id: alz
+  - id: contoso-root
     display_name: "Azure Landing Zones"
     archetypes:
       - root_override
     parent_id: null
     exists: false
 
-  - id: platform
+  - id: contoso-platform
     display_name: "Platform"
     archetypes:
       - platform_override
     parent_id: alz
     exists: false
 
-  - id: landingzones
+  - id: contoso-landingzones
     display_name: "Landing zones"
     archetypes:
       - landing_zones_override
     parent_id: alz
     exists: false
 
-  - id: corp
+  - id: contoso-corp
     display_name: "Corp"
     archetypes:
       - corp
     parent_id: landingzones
     exists: false
 
-  - id: online
+  - id: contoso-online
     display_name: "Online"
     archetypes:
       - online
     parent_id: landingzones
     exists: false
 
-  - id: sandbox
+  - id: contoso-sandbox
     display_name: "Sandbox"
     archetypes:
       - sandbox
     parent_id: alz
     exists: false
 
-  - id: management
+  - id: contoso-management
     display_name: "Management"
     archetypes:
       - management
     parent_id: platform
     exists: false
 
-  - id: connectivity
+  - id: contoso-connectivity
     display_name: "Connectivity"
     archetypes:
       - connectivity_override
     parent_id: platform
     exists: false
 
-  - id: identity
+  - id: contoso-identity
     display_name: "Identity"
     archetypes:
       - identity_override
     parent_id: platform
     exists: false
 
-  - id: decommissioned
+  - id: contoso-decommissioned
     display_name: "Decommissioned"
     archetypes:
       - decommissioned
