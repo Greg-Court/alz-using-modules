@@ -2,7 +2,7 @@ $schema: "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/ma
 name: alz
 management_groups:
   - id: contoso-root
-    display_name: "Azure Landing Zones"
+    display_name: "Contoso"
     archetypes:
       - root_override
     parent_id: null
