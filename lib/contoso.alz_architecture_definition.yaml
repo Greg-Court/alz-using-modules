@@ -29,6 +29,20 @@ management_groups:
     parent_id: landingzones
     exists: false
 
+  - id: contoso-app
+    display_name: "App"
+    archetypes:
+      - app
+    parent_id: contos-corp
+    exists: false
+
+  - id: contoso-data
+    display_name: "Data"
+    archetypes:
+      - data
+    parent_id: contoso-corp
+    exists: false
+
   - id: contoso-online
     display_name: "Online"
     archetypes:
