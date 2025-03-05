@@ -101,12 +101,10 @@ module "alz_avm_connectivity_hubs" {
           "privatelink.queue.core.windows.net",
           "privatelink.table.core.windows.net"
         ]
-        autoregistration_zone = "az.internal"
+        private_dns_resolver = {
+          name = "pdr-hub-${var.loc}-01"
+          subnet_address_prefix = "10.0.1.0/26"
       }
-      # azure_dns_private_resolver = { # TODO!
-      #   name = "pdr-hub-${var.loc}-01"
-      #   subnet_address_prefix = "10.0.1.0/26"
-      # }
       # bastion = {
       #   sku                   = "Basic"
       #   resource_group_name   = azurerm_resource_group.bastion_primary.name
