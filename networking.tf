@@ -16,7 +16,7 @@ resource "azurerm_resource_group" "bastion_primary" {
   provider = azurerm.connectivity
 }
 
-module "hub_and_spoke_vnet" {
+module "connectivity_hubs" {
   source = "./modules/connectivity-hubs"
   hub_virtual_networks = {
     primary = {
