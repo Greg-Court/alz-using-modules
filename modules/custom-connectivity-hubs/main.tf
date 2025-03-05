@@ -65,8 +65,7 @@ module "vpn_gateways" {
   # Create VPN gateways only where configured
   for_each = {
     for k, v in var.hub_virtual_networks : k => v.virtual_network_gateways.vpn
-    if lookup(v, "virtual_network_gateways", null) != null && 
-       lookup(v.virtual_network_gateways, "vpn", null) != null
+    if try(v.virtual_network_gateways.vpn, null) != null
   }
   
   name                    = each.value.name
@@ -91,8 +90,7 @@ module "expressroute_gateways" {
   # Create ExpressRoute gateways only where configured
   for_each = {
     for k, v in var.hub_virtual_networks : k => v.virtual_network_gateways.express_route
-    if lookup(v, "virtual_network_gateways", null) != null && 
-       lookup(v.virtual_network_gateways, "express_route", null) != null
+    if try(v.virtual_network_gateways.express_route, null) != null
   }
   
   name                    = each.value.name
@@ -111,7 +109,7 @@ module "expressroute_gateways" {
 resource "azurerm_public_ip" "bastion_pip" {
   for_each = {
     for k, v in var.hub_virtual_networks : k => v.bastion
-    if lookup(v, "bastion", null) != null
+    if try(v.bastion, null) != null
   }
   
   name                = each.value.bastion_public_ip.name
@@ -131,7 +129,7 @@ module "bastion_hosts" {
   
   for_each = {
     for k, v in var.hub_virtual_networks : k => v.bastion
-    if lookup(v, "bastion", null) != null
+    if try(v.bastion, null) != null
   }
   
   name                = each.value.bastion_host.name
@@ -140,7 +138,7 @@ module "bastion_hosts" {
   sku                 = each.value.sku
   
   ip_configuration = {
-    name                 = "configuration"
+    name                 = try(each.value.bastion_host.ip_configuration_name, "configuration")
     subnet_id            = "${local.hub_networks[each.key].virtual_network.id}/subnets/AzureBastionSubnet"
     public_ip_address_id = azurerm_public_ip.bastion_pip[each.key].id
   }
@@ -158,14 +156,14 @@ module "private_dns_zones" {
   for_each = {
     for item in flatten([
       for hub_key, hub_config in var.hub_virtual_networks : [
-        for zone in lookup(lookup(hub_config, "private_dns_zones", {}), "private_dns_zones", []) : {
-          key           = "${hub_key}-${zone}"
-          zone_name     = zone
-          hub_key       = hub_key
+        for zone in try(hub_config.private_dns_zones.private_dns_zones, []) : {
+          key                = "${hub_key}-${zone}"
+          zone_name          = zone
+          hub_key            = hub_key
           resource_group_name = hub_config.private_dns_zones.resource_group_name
         }
       ]
-      if lookup(hub_config, "private_dns_zones", null) != null
+      if try(hub_config.private_dns_zones, null) != null
     ]) : item.key => item
   }
   
@@ -194,8 +192,7 @@ module "private_dns_autoregistration_zones" {
   
   for_each = {
     for hub_key, hub_config in var.hub_virtual_networks : hub_key => hub_config.private_dns_zones
-    if lookup(hub_config, "private_dns_zones", null) != null && 
-       lookup(hub_config.private_dns_zones, "autoregistration_zone", null) != null
+    if try(hub_config.private_dns_zones.autoregistration_zone, null) != null
   }
   
   domain_name         = each.value.autoregistration_zone
