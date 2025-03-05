@@ -42,11 +42,11 @@ module "management_groups" {
   dependencies = {
     policy_assignments = [
       module.management_resources,
-      module.hub_and_spoke_vnet
+      module.custom_connectivity_hubs
     ]
     policy_role_assignments = [
       module.management_resources,
-      module.hub_and_spoke_vnet
+      module.custom_connectivity_hubs
     ]
   }
   override_policy_definition_parameter_assign_permissions_set   = null
