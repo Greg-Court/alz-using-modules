@@ -17,7 +17,7 @@ resource "azurerm_resource_group" "bastion_primary" {
 }
 
 module "hub_and_spoke_vnet" {
-  source = "./modules/connectivity-hub"
+  source = "./modules/connectivity-hubs"
   hub_virtual_networks = {
     primary = {
       hub_virtual_network = {
