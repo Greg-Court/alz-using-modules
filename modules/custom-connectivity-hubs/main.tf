@@ -15,6 +15,7 @@ module "hub_networks" {
       ddos_protection_plan_id         = lookup(v.hub_virtual_network, "ddos_protection_plan_id", null)
       mesh_peering_enabled            = lookup(v.hub_virtual_network, "mesh_peering_enabled", true)
       firewall                        = lookup(v.hub_virtual_network, "firewall", null)
+      resource_group_lock_enabled     = lookup(v.hub_virtual_network, "resource_group_lock_enabled", null)
       subnets = merge(
         lookup(v.hub_virtual_network, "subnets", {}),
         lookup(v, "virtual_network_gateways", null) != null ? {
