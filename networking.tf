@@ -94,7 +94,7 @@ module "custom_connectivity_hubs" {
       }
       bastion = {
         sku                             = "Basic"
-        resource_group_name             = "rg-hub-${var.loc}-01"
+        resource_group_name             = "rg-hub-bas-${var.loc}-01"
         resource_group_creation_enabled = true
         subnet_address_prefix           = "10.0.0.64/26"
         bastion_host = {
@@ -128,11 +128,11 @@ module "custom_connectivity_hubs" {
           name                  = "fw-hub-${var.loc_sec}-01"
           sku_name              = "AZFW_VNet"
           sku_tier              = "Standard"
-          zones                 = ["1", "2", "3"]
+          zones                 = []
           default_ip_configuration = {
             public_ip_config = {
               name  = "pip-fw-hub-${var.loc_sec}-01"
-              zones = ["1", "2", "3"]
+              zones = []
             }
           }
           # management_subnet_address_prefix = "10.1.0.192/26" # only required if Basic SKU
