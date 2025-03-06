@@ -237,4 +237,5 @@ module "private_dns_autoregistration_zones" {
   tags = var.tags
   
   depends_on = [module.hub_networks]
-}
+} 
+

@@ -140,8 +140,12 @@ module "custom_connectivity_hubs" {
   }
 }
 
+output "primary_network_id" {
+  description = "Raw output of the hub networks created by the module"
+  value       = module.custom_connectivity_hubs.hub_networks.primary.id
+}
 
-output "hub_networks_debug" {
-  description = "Raw output of the hub_networks module for debugging"
-  value       = module.custom_connectivity_hubs.debug_hub_networks_raw
+output "dns_resource_group" {
+  description = "The DNS resource group created by the module"
+  value       = module.custom_connectivity_hubs.resource_groups.primary.dns
 }
