@@ -104,19 +104,30 @@ output "resource_groups" {
   description = "Resource groups created by the module"
   value = {
     for k, v in var.hub_virtual_networks : k => {
-      hub     = try({
-        for rg_key, rg_val in module.hub_networks.resource_groups : rg_key => rg_val
-        if startswith(rg_key, k)
-      }, {})
-      dns     = try(azurerm_resource_group.dns[k], null)
-      bastion = try(azurerm_resource_group.bastion[k], null)
+      # Hub resource group 
+      hub = {
+        name     = v.hub_virtual_network.resource_group_name
+        location = v.hub_virtual_network.location
+      }
+      
+      # DNS resource group (if configured)
+      dns = try(v.private_dns_zones, null) != null ? {
+        name     = v.private_dns_zones.resource_group_name
+        location = v.hub_virtual_network.location
+      } : null
+      
+      # Bastion resource group (if configured)
+      bastion = try(v.bastion, null) != null ? {
+        name     = v.bastion.resource_group_name
+        location = v.hub_virtual_network.location
+      } : null
     }
   }
   # Example usage:
   # - Access raw output: module.custom_connectivity_hubs.resource_groups
-  # - Access primary hub resource group name: keys(module.custom_connectivity_hubs.resource_groups.primary.hub)[0]
-  # - Access primary hub resource group: values(module.custom_connectivity_hubs.resource_groups.primary.hub)[0]
-  # - Access primary DNS resource group: module.custom_connectivity_hubs.resource_groups.primary.dns.name
-  # - Access primary bastion resource group: module.custom_connectivity_hubs.resource_groups.primary.bastion.name
+  # - Access primary hub resource group name: module.custom_connectivity_hubs.resource_groups.primary.hub.name
+  # - Access primary hub resource group location: module.custom_connectivity_hubs.resource_groups.primary.hub.location
+  # - Access primary DNS resource group name: module.custom_connectivity_hubs.resource_groups.primary.dns.name
+  # - Access primary bastion resource group name: module.custom_connectivity_hubs.resource_groups.primary.bastion.name
   # - Check if DNS resource group exists: module.custom_connectivity_hubs.resource_groups.primary.dns != null
 }

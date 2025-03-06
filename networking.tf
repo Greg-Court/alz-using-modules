@@ -9,25 +9,25 @@ module "custom_connectivity_hubs" {
         location                        = var.location
         address_space                   = ["10.0.0.0/16"]
         routing_address_space           = [] # set to empty to prevent routes being automatically created
-        route_table_name_firewall       = "rt-hub-fw-${var.loc}-01"
-        route_table_name_user_subnets   = "rt-hub-std-${var.loc}-01"
-        route_table_entries_firewall = [
-          {
-            name                = "test"
-            address_prefix      = "192.168.0.0/20"
-            next_hop_type       = "VirtualAppliance"
-            next_hop_ip_address = "10.0.0.4"
-          }
-        ]
-        route_table_entries_user_subnets = [
-          {
-            name                = "test"
-            address_prefix      = "192.168.0.0/20"
-            next_hop_type       = "VirtualAppliance"
-            next_hop_ip_address = "10.0.0.4"
-          }
-        ]
-        hub_router_ip_address           = "10.0.0.4"  # required if not deploying firewall!
+        # route_table_name_firewall       = "rt-hub-fw-${var.loc}-01"
+        # route_table_name_user_subnets   = "rt-hub-std-${var.loc}-01"
+        # route_table_entries_firewall = [
+        #   {
+        #     name                = "test"
+        #     address_prefix      = "192.168.0.0/20"
+        #     next_hop_type       = "VirtualAppliance"
+        #     next_hop_ip_address = "10.0.0.4"
+        #   }
+        # ]
+        # route_table_entries_user_subnets = [
+        #   {
+        #     name                = "test"
+        #     address_prefix      = "192.168.0.0/20"
+        #     next_hop_type       = "VirtualAppliance"
+        #     next_hop_ip_address = "10.0.0.4"
+        #   }
+        # ]
+        # hub_router_ip_address           = "10.0.0.4"  # required if not deploying firewall!
         ddos_protection_plan_id         = null
         resource_group_lock_enabled     = false
         subnets = {
@@ -36,30 +36,31 @@ module "custom_connectivity_hubs" {
             address_prefixes = ["10.0.10.0/26"]
           }
         }
-        # firewall = {
-        #   subnet_address_prefix = "10.0.0.0/26"
-        #   name                  = "fw-hub-${var.loc}-01"
-        #   sku_name              = "AZFW_VNet"
-        #   sku_tier              = "Standard"
-        #   zones                 = ["1", "2", "3"]
-        #   default_ip_configuration = {
-        #     public_ip_config = {
-        #       name  = "pip-fw-hub-${var.loc}-01"
-        #       zones = ["1", "2", "3"]
-        #     }
-        #   }
-        #   # management_subnet_address_prefix = "10.0.0.192/26" # only required if Basic SKU
-        #   # management_ip_configuration = {                    # only required if Basic SKU
-        #   #   name = "myManagementIp"
-        #   #   public_ip_config = {
-        #   #     name  = "fw-hub-mgmt-${var.loc}-01"
-        #   #     zones = ["1", "2", "3"]
-        #   #   }
-        #   # }
-        #   firewall_policy = {
-        #     name = "fwp-hub-${var.loc}-01"
-        #   }
-        # }
+        firewall = {
+          subnet_address_prefix = "10.0.0.0/26"
+          name                  = "fw-hub-${var.loc}-01"
+          sku_name              = "AZFW_VNet"
+          sku_tier              = "Basic"
+          zones                 = []
+          default_ip_configuration = {
+            public_ip_config = {
+              name  = "pip-fw-hub-${var.loc}-01"
+              zones = []
+            }
+          }
+          management_subnet_address_prefix = "10.0.0.192/26" # only required if Basic SKU
+          management_ip_configuration = {                    # only required if Basic SKU
+            name = "myManagementIp"
+            public_ip_config = {
+              name  = "pip-fw-hub-mgmt-${var.loc}-01"
+              zones = ["1", "2", "3"]
+            }
+          }
+          firewall_policy = {
+            name = "fwp-hub-${var.loc}-01"
+            sku  = "Basic"
+          }
+        }
       }
 
       # virtual_network_gateways = {
@@ -199,4 +200,48 @@ output "primary_network_id" {
 output "dns_resource_group" {
   description = "The DNS resource group created by the module"
   value       = module.custom_connectivity_hubs.resource_groups.primary.dns
+}
+
+
+resource "azurerm_route_table" "firewall" {
+  name                = "rt-hub-fw-${var.loc}-01-custom"
+  location            = var.location
+  resource_group_name = "rg-hub-${var.loc}-01"
+  
+  disable_bgp_route_propagation = false
+  
+  route {
+    name                   = "Internet"
+    address_prefix         = "0.0.0.0/20"
+    next_hop_type          = "Internet"
+  }
+  
+  tags = var.tags
+  
+  # Ensure the resource group exists before creating the route table
+  depends_on = [module.custom_connectivity_hubs]
+}
+
+resource "azurerm_route_table" "user_subnets" {
+  name                = "rt-hub-std-${var.loc}-01-custom"
+  location            = var.location
+  resource_group_name = "rg-hub-${var.loc}-01"
+  
+  # Optionally disable BGP route propagation
+  disable_bgp_route_propagation = false
+  
+  # Add your routes
+  route {
+    name                   = "test"
+    address_prefix         = "192.168.0.0/20"
+    next_hop_type          = "VirtualAppliance"
+    next_hop_in_ip_address = "10.0.0.4"
+  }
+  
+  # Add additional routes as needed
+  
+  tags = var.tags
+  
+  # Ensure the resource group exists before creating the route table
+  depends_on = [module.custom_connectivity_hubs]
 }
