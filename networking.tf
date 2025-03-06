@@ -8,9 +8,25 @@ module "custom_connectivity_hubs" {
         name                            = "vnet-hub-${var.loc}-01"
         location                        = var.location
         address_space                   = ["10.0.0.0/16"]
-        routing_address_space           = ["10.0.0.0/16"]
+        routing_address_space           = [] # set to empty to prevent routes being automatically created
         route_table_name_firewall       = "rt-hub-fw-${var.loc}-01"
         route_table_name_user_subnets   = "rt-hub-std-${var.loc}-01"
+        route_table_entries_firewall = [
+          {
+            name                = "test"
+            address_prefix      = "192.168.0.0/20"
+            next_hop_type       = "VirtualAppliance"
+            next_hop_ip_address = "10.0.0.4"
+          }
+        ]
+        route_table_entries_user_subnets = [
+          {
+            name                = "test"
+            address_prefix      = "192.168.0.0/20"
+            next_hop_type       = "VirtualAppliance"
+            next_hop_ip_address = "10.0.0.4"
+          }
+        ]
         hub_router_ip_address           = "10.0.0.4"  # required if not deploying firewall!
         ddos_protection_plan_id         = null
         resource_group_lock_enabled     = false
@@ -115,7 +131,7 @@ module "custom_connectivity_hubs" {
         name                            = "vnet-hub-${var.loc_sec}-01"
         location                        = var.location_secondary
         address_space                   = ["10.1.0.0/16"]
-        routing_address_space           = ["10.1.0.0/16"]
+        routing_address_space           = [] # set to empty to prevent routes being automatically created
         route_table_name_firewall       = "rt-hub-fw-${var.loc_sec}-01"
         route_table_name_user_subnets   = "rt-hub-std-${var.loc_sec}-01"
         ddos_protection_plan_id         = null

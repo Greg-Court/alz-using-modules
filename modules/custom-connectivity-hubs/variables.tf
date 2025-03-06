@@ -14,6 +14,20 @@ variable "hub_virtual_networks" {
       mesh_peering_enabled          = optional(bool)
       resource_group_lock_enabled   = optional(bool)
       hub_router_ip_address         = optional(string)
+      route_table_entries_firewall  = optional(list(object({
+        name                = string
+        address_prefix      = string
+        next_hop_type       = string
+        has_bgp_override    = optional(bool, false)
+        next_hop_ip_address = optional(string)
+      })), [])
+      route_table_entries_user_subnets = optional(list(object({
+        name                = string
+        address_prefix      = string
+        next_hop_type       = string
+        has_bgp_override    = optional(bool, false)
+        next_hop_ip_address = optional(string)
+      })), [])
       subnets                       = optional(map(object({
         name             = string
         address_prefixes = list(string)
