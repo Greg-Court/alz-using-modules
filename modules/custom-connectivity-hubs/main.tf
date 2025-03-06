@@ -1,49 +1,35 @@
-locals {
-  # Process hub networks to get their IDs and subnets
-  hub_networks = {
-    for hub_key, hub_output in module.hub_networks : hub_key => {
-      # Get the first (and only) virtual network from the map since each hub_networks module instance creates only one VNet
-      virtual_network = one(values(hub_output.virtual_networks))
-    }
-  }
-}
-
-# Deploy hub networks with Azure Firewall
 module "hub_networks" {
   source  = "Azure/avm-ptn-hubnetworking/azurerm"
   version = "0.5.2"
   
-  for_each = var.hub_virtual_networks
-  
-  # Transform the input structure to match the expected format
   hub_virtual_networks = {
-    (each.key) = {
-      name                            = each.value.hub_virtual_network.name
-      address_space                   = each.value.hub_virtual_network.address_space
-      location                        = each.value.hub_virtual_network.location
-      resource_group_name             = each.value.hub_virtual_network.resource_group_name
-      resource_group_creation_enabled = lookup(each.value.hub_virtual_network, "resource_group_creation_enabled", false)
-      route_table_name_firewall       = lookup(each.value.hub_virtual_network, "route_table_name_firewall", null)
-      route_table_name_user_subnets   = lookup(each.value.hub_virtual_network, "route_table_name_user_subnets", null)
-      routing_address_space           = lookup(each.value.hub_virtual_network, "routing_address_space", [])
-      ddos_protection_plan_id         = lookup(each.value.hub_virtual_network, "ddos_protection_plan_id", null)
-      firewall                        = lookup(each.value.hub_virtual_network, "firewall", null)
-      # Add gateway and bastion subnets to the existing subnets map
+    for k, v in var.hub_virtual_networks : k => {
+      name                            = v.hub_virtual_network.name
+      address_space                   = v.hub_virtual_network.address_space
+      location                        = v.hub_virtual_network.location
+      resource_group_name             = v.hub_virtual_network.resource_group_name
+      resource_group_creation_enabled = lookup(v.hub_virtual_network, "resource_group_creation_enabled", false)
+      route_table_name_firewall       = lookup(v.hub_virtual_network, "route_table_name_firewall", null)
+      route_table_name_user_subnets   = lookup(v.hub_virtual_network, "route_table_name_user_subnets", null)
+      routing_address_space           = lookup(v.hub_virtual_network, "routing_address_space", [])
+      ddos_protection_plan_id         = lookup(v.hub_virtual_network, "ddos_protection_plan_id", null)
+      mesh_peering_enabled            = lookup(v.hub_virtual_network, "mesh_peering_enabled", true)
+      firewall                        = lookup(v.hub_virtual_network, "firewall", null)
       subnets = merge(
-        lookup(each.value.hub_virtual_network, "subnets", {}),
-        lookup(each.value, "virtual_network_gateways", null) != null ? {
+        lookup(v.hub_virtual_network, "subnets", {}),
+        lookup(v, "virtual_network_gateways", null) != null ? {
           GatewaySubnet = {
             name             = "GatewaySubnet"
-            address_prefixes = [each.value.virtual_network_gateways.subnet_address_prefix]
+            address_prefixes = [v.virtual_network_gateways.subnet_address_prefix]
             route_table = {
               assign_generated_route_table = false
             }
           }
         } : {},
-        lookup(each.value, "bastion", null) != null ? {
+        lookup(v, "bastion", null) != null ? {
           AzureBastionSubnet = {
             name             = "AzureBastionSubnet"
-            address_prefixes = [each.value.bastion.subnet_address_prefix]
+            address_prefixes = [v.bastion.subnet_address_prefix]
             route_table = {
               assign_generated_route_table = false
             }
@@ -51,6 +37,19 @@ module "hub_networks" {
         } : {}
       )
       tags = var.tags
+    }
+  }
+}
+
+locals {
+  # Process hub networks to get their IDs and subnets
+  hub_networks = {
+    for hub_key, v in var.hub_virtual_networks : hub_key => {
+      # Get the virtual network from the map
+      virtual_network = {
+        for attr_key, attr_val in module.hub_networks.virtual_networks : attr_key => attr_val
+        if startswith(attr_key, hub_key)
+      }[hub_key]
     }
   }
 }
@@ -68,7 +67,7 @@ module "vpn_gateways" {
   
   name                    = each.value.name
   location                = each.value.location
-  virtual_network_id      = local.hub_networks[each.key].virtual_network.id
+  virtual_network_id      = module.hub_networks.virtual_networks["${each.key}"].id
   type                    = "Vpn"
   vpn_type                = "RouteBased"
   sku                     = each.value.sku
@@ -93,7 +92,7 @@ module "expressroute_gateways" {
   
   name                    = each.value.name
   location                = each.value.location
-  virtual_network_id      = local.hub_networks[each.key].virtual_network.id
+  virtual_network_id      = module.hub_networks.virtual_networks["${each.key}"].id
   type                    = "ExpressRoute"
   sku                     = each.value.sku
   subnet_creation_enabled = false # Subnet already created by hub_networks module
@@ -154,7 +153,7 @@ module "bastion_hosts" {
   
   ip_configuration = {
     name                 = try(each.value.bastion_host.ip_configuration_name, "configuration")
-    subnet_id            = "${local.hub_networks[each.key].virtual_network.id}/subnets/AzureBastionSubnet"
+    subnet_id            = "${module.hub_networks.virtual_networks["${each.key}"].id}/subnets/AzureBastionSubnet"
     public_ip_address_id = azurerm_public_ip.bastion[each.key].id
   }
   
@@ -198,9 +197,9 @@ module "private_dns_zones" {
   resource_group_name = each.value.resource_group_name
   
   virtual_network_links = {
-    "link-${local.hub_networks[each.value.hub_key].virtual_network.name}" = {
-      vnetlinkname     = "link-${local.hub_networks[each.value.hub_key].virtual_network.name}"
-      vnetid           = local.hub_networks[each.value.hub_key].virtual_network.id
+    "link-${module.hub_networks.virtual_networks["${each.value.hub_key}"].name}" = {
+      vnetlinkname     = "link-${module.hub_networks.virtual_networks["${each.value.hub_key}"].name}"
+      vnetid           = module.hub_networks.virtual_networks["${each.value.hub_key}"].id
       autoregistration = false
       tags             = var.tags
     }
@@ -226,9 +225,9 @@ module "private_dns_autoregistration_zones" {
   resource_group_name = each.value.resource_group_name
   
   virtual_network_links = {
-    "link-${local.hub_networks[each.key].virtual_network.name}" = {
-      vnetlinkname     = "link-${local.hub_networks[each.key].virtual_network.name}"
-      vnetid           = local.hub_networks[each.key].virtual_network.id
+    "link-${module.hub_networks.virtual_networks["${each.key}"].name}" = {
+      vnetlinkname     = "link-${module.hub_networks.virtual_networks["${each.key}"].name}"
+      vnetid           = module.hub_networks.virtual_networks["${each.key}"].id
       autoregistration = true
       tags             = var.tags
     }
@@ -238,4 +237,3 @@ module "private_dns_autoregistration_zones" {
   
   depends_on = [module.hub_networks]
 } 
-

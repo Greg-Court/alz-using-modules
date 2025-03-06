@@ -11,6 +11,7 @@ variable "hub_virtual_networks" {
       route_table_name_firewall     = optional(string)
       route_table_name_user_subnets = optional(string)
       ddos_protection_plan_id       = optional(string)
+      mesh_peering_enabled          = optional(bool)
       subnets                       = optional(map(object({
         name             = string
         address_prefixes = list(string)
