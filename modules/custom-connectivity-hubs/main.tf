@@ -24,7 +24,7 @@ module "hub_networks" {
       address_space                   = each.value.hub_virtual_network.address_space
       location                        = each.value.hub_virtual_network.location
       resource_group_name             = each.value.hub_virtual_network.resource_group_name
-      resource_group_creation_enabled = false
+      resource_group_creation_enabled = lookup(each.value.hub_virtual_network, "resource_group_creation_enabled", false)
       route_table_name_firewall       = lookup(each.value.hub_virtual_network, "route_table_name_firewall", null)
       route_table_name_user_subnets   = lookup(each.value.hub_virtual_network, "route_table_name_user_subnets", null)
       routing_address_space           = lookup(each.value.hub_virtual_network, "routing_address_space", [])
@@ -122,6 +122,19 @@ resource "azurerm_public_ip" "bastion_pip" {
   tags = var.tags
 }
 
+# Create resource groups for bastion where needed
+resource "azurerm_resource_group" "bastion_rg" {
+  for_each = {
+    for k, v in var.hub_virtual_networks : k => v.bastion
+    if lookup(v, "bastion", null) != null && 
+       lookup(v.bastion, "resource_group_creation_enabled", false) == true
+  }
+  
+  name     = each.value.resource_group_name
+  location = var.hub_virtual_networks[each.key].hub_virtual_network.location
+  tags     = var.tags
+}
+
 # Deploy bastion hosts
 module "bastion_hosts" {
   source  = "Azure/avm-res-network-bastionhost/azurerm"
@@ -146,6 +159,18 @@ module "bastion_hosts" {
   tags = var.tags
   
   depends_on = [module.hub_networks, azurerm_public_ip.bastion_pip]
+}
+
+resource "azurerm_resource_group" "dns_rg" {
+  for_each = {
+    for k, v in var.hub_virtual_networks : k => v.private_dns_zones
+    if lookup(v, "private_dns_zones", null) != null && 
+       lookup(v.private_dns_zones, "resource_group_creation_enabled", false) == true
+  }
+  
+  name     = each.value.resource_group_name
+  location = var.hub_virtual_networks[each.key].hub_virtual_network.location
+  tags     = var.tags
 }
 
 # Deploy private DNS zones and link to hub networks

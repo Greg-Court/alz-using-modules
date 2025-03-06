@@ -4,6 +4,7 @@ variable "hub_virtual_networks" {
     hub_virtual_network = object({
       name                          = string
       resource_group_name           = string
+      resource_group_creation_enabled = optional(bool, false)
       location                      = string
       address_space                 = list(string)
       routing_address_space         = optional(list(string), [])
@@ -68,14 +69,16 @@ variable "hub_virtual_networks" {
       }))
     }))
     private_dns_zones = optional(object({
-      resource_group_name = string
-      private_dns_zones   = list(string)
-      autoregistration_zone = optional(string)
+      resource_group_name           = string
+      resource_group_creation_enabled = optional(bool, false)
+      private_dns_zones             = list(string)
+      autoregistration_zone         = optional(string)
     }))
     bastion = optional(object({
-      sku                   = string
-      resource_group_name   = string
-      subnet_address_prefix = string
+      sku                           = string
+      resource_group_name           = string
+      resource_group_creation_enabled = optional(bool, false)
+      subnet_address_prefix         = string
       bastion_host = object({
         name = string
       })
