@@ -124,7 +124,7 @@ module "custom_connectivity_hubs" {
           }
         }
         firewall = {
-          subnet_address_prefix = "10.1s.0.0/26"
+          subnet_address_prefix = "10.1.0.0/26"
           name                  = "fw-hub-${var.loc_sec}-01"
           sku_name              = "AZFW_VNet"
           sku_tier              = "Standard"
