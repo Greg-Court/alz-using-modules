@@ -174,7 +174,7 @@ resource "azurerm_resource_group" "dns" {
   tags     = var.tags
 }
 
-# Deploy private DNS zones and link to hub networks
+# Deploy private DNS zones and link to ALL hub networks
 module "private_dns_zones" {
   source  = "Azure/avm-res-network-privatednszone/azurerm"
   version = "0.3.2"
@@ -196,20 +196,21 @@ module "private_dns_zones" {
   domain_name         = each.value.zone_name
   resource_group_name = each.value.resource_group_name
   
+  # Create links to ALL hub networks, not just the one where the zone is defined
   virtual_network_links = {
-    "link-${module.hub_networks.virtual_networks["${each.value.hub_key}"].name}" = {
-      vnetlinkname     = "link-${module.hub_networks.virtual_networks["${each.value.hub_key}"].name}"
-      vnetid           = module.hub_networks.virtual_networks["${each.value.hub_key}"].id
-      autoregistration = false
-      tags             = var.tags
-    }
+    for hub_key, hub_config in var.hub_virtual_networks : 
+      "link-${module.hub_networks.virtual_networks[hub_key].name}" => {
+        vnetlinkname     = "link-${module.hub_networks.virtual_networks[hub_key].name}"
+        vnetid           = module.hub_networks.virtual_networks[hub_key].id
+        autoregistration = false
+        tags             = var.tags
+      }
   }
   
   tags = var.tags
   
   depends_on = [module.hub_networks, azurerm_resource_group.dns]
 }
-
 
 # Deploy a private DNS zone with autoregistration for each hub
 module "private_dns_autoregistration_zones" {
@@ -224,16 +225,19 @@ module "private_dns_autoregistration_zones" {
   domain_name         = each.value.autoregistration_zone
   resource_group_name = each.value.resource_group_name
   
+  # Create links to ALL hub networks, but with autoregistration only for the owning hub
   virtual_network_links = {
-    "link-${module.hub_networks.virtual_networks["${each.key}"].name}" = {
-      vnetlinkname     = "link-${module.hub_networks.virtual_networks["${each.key}"].name}"
-      vnetid           = module.hub_networks.virtual_networks["${each.key}"].id
-      autoregistration = true
-      tags             = var.tags
-    }
+    for link_hub_key, link_hub_config in var.hub_virtual_networks : 
+      "link-${module.hub_networks.virtual_networks[link_hub_key].name}" => {
+        vnetlinkname     = "link-${module.hub_networks.virtual_networks[link_hub_key].name}"
+        vnetid           = module.hub_networks.virtual_networks[link_hub_key].id
+        # Only enable autoregistration for the hub that owns this zone
+        autoregistration = link_hub_key == each.key
+        tags             = var.tags
+      }
   }
   
   tags = var.tags
   
   depends_on = [module.hub_networks]
-} 
+}

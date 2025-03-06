@@ -128,8 +128,8 @@ locals {
             enableAscForCspm                            = "Disabled"
           }
         }
-        Inherit-RG-Tags          = { enforcement_mode = "DoNotEnforce" } # Custom Policy
-        Allowed-Locations = { # Custom Policy
+        Inherit-RG-Tags = { enforcement_mode = "DoNotEnforce" } # Custom Policy
+        Allowed-Locations = {                                   # Custom Policy
           enforcement_mode = "DoNotEnforce"
           parameters = {
             listOfAllowedLocations = [
@@ -194,8 +194,8 @@ locals {
         Enforce-TLS-SSL-Q225     = { enforcement_mode = "DoNotEnforce" }
         # Deploy-VM-Backup         = { enforcement_mode = "DoNotEnforce" } # removed
         # Enable-DDoS-VNET         = { enforcement_mode = "DoNotEnforce" } # removed
-        Enforce-VM-Tags          = { enforcement_mode = "DoNotEnforce" } # Custom Policy
-        Enforce-RG-Tags          = { enforcement_mode = "DoNotEnforce" } # Custom Policy
+        Enforce-VM-Tags = { enforcement_mode = "DoNotEnforce" } # Custom Policy
+        Enforce-RG-Tags = { enforcement_mode = "DoNotEnforce" } # Custom Policy
       }
     }
     contoso-corp = {

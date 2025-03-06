@@ -23,9 +23,19 @@ variable "loc" {
   description = "Short location code, e.g. 'uk' or 'use'"
 }
 
+variable "loc_sec" {
+  type        = string
+  description = "Secondary short location code, e.g. 'uk' or 'use'"
+}
+
 variable "location" {
   type        = string
   description = "Azure Region name, e.g. 'uksouth'"
+}
+
+variable "location_secondary" {
+  type        = string
+  description = "Secondary Azure Region name, e.g. 'uksouth'"
 }
 
 variable "tags" {
