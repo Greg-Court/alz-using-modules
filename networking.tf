@@ -11,6 +11,7 @@ module "custom_connectivity_hubs" {
         routing_address_space           = ["10.0.0.0/16"]
         route_table_name_firewall       = "rt-hub-fw-${var.loc}-01"
         route_table_name_user_subnets   = "rt-hub-std-${var.loc}-01"
+        hub_router_ip_address           = "10.0.0.4"  # required if not deploying firewall!
         ddos_protection_plan_id         = null
         resource_group_lock_enabled     = false
         subnets = {
@@ -119,6 +120,7 @@ module "custom_connectivity_hubs" {
         route_table_name_user_subnets   = "rt-hub-std-${var.loc_sec}-01"
         ddos_protection_plan_id         = null
         resource_group_lock_enabled     = false
+        hub_router_ip_address           = "10.1.0.4"  # required if not deploying firewall!
         subnets = {
           "TestSubnet" = {
             name             = "TestSubnet"

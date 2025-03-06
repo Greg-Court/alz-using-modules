@@ -16,6 +16,7 @@ module "hub_networks" {
       mesh_peering_enabled            = lookup(v.hub_virtual_network, "mesh_peering_enabled", true)
       firewall                        = lookup(v.hub_virtual_network, "firewall", null)
       resource_group_lock_enabled     = lookup(v.hub_virtual_network, "resource_group_lock_enabled", null)
+      hub_router_ip_address           = lookup(v.hub_virtual_network, "hub_router_ip_address", null)
       subnets = merge(
         lookup(v.hub_virtual_network, "subnets", {}),
         lookup(v, "virtual_network_gateways", null) != null ? {

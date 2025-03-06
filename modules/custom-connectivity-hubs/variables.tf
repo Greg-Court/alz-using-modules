@@ -13,6 +13,7 @@ variable "hub_virtual_networks" {
       ddos_protection_plan_id       = optional(string)
       mesh_peering_enabled          = optional(bool)
       resource_group_lock_enabled   = optional(bool)
+      hub_router_ip_address         = optional(string)
       subnets                       = optional(map(object({
         name             = string
         address_prefixes = list(string)
