@@ -4,8 +4,6 @@ locals {
     for hub_key, hub_output in module.hub_networks : hub_key => {
       # Get the first (and only) virtual network from the map since each hub_networks module instance creates only one VNet
       virtual_network = one(values(hub_output.virtual_networks))
-      # Get the subnets from the virtual network
-      subnets = one(values(hub_output.virtual_networks)).subnets
     }
   }
 }
@@ -106,7 +104,7 @@ module "expressroute_gateways" {
 }
 
 # Create public IPs for bastion hosts
-resource "azurerm_public_ip" "bastion_pip" {
+resource "azurerm_public_ip" "bastion" {
   for_each = {
     for k, v in var.hub_virtual_networks : k => v.bastion
     if try(v.bastion, null) != null
@@ -120,18 +118,22 @@ resource "azurerm_public_ip" "bastion_pip" {
   zones               = length(each.value.bastion_public_ip.zones) > 0 ? each.value.bastion_public_ip.zones : null
   
   tags = var.tags
+  
+  depends_on = [
+    azurerm_resource_group.bastion
+  ]
 }
 
 # Create resource groups for bastion where needed
-resource "azurerm_resource_group" "bastion_rg" {
+resource "azurerm_resource_group" "bastion" {
   for_each = {
-    for k, v in var.hub_virtual_networks : k => v.bastion
-    if lookup(v, "bastion", null) != null && 
-       lookup(v.bastion, "resource_group_creation_enabled", false) == true
+    for k, v in var.hub_virtual_networks : k => v
+    if try(v.bastion, null) != null && 
+       try(v.bastion.resource_group_creation_enabled, false) == true
   }
   
-  name     = each.value.resource_group_name
-  location = var.hub_virtual_networks[each.key].hub_virtual_network.location
+  name     = each.value.bastion.resource_group_name
+  location = each.value.hub_virtual_network.location
   tags     = var.tags
 }
 
@@ -153,23 +155,23 @@ module "bastion_hosts" {
   ip_configuration = {
     name                 = try(each.value.bastion_host.ip_configuration_name, "configuration")
     subnet_id            = "${local.hub_networks[each.key].virtual_network.id}/subnets/AzureBastionSubnet"
-    public_ip_address_id = azurerm_public_ip.bastion_pip[each.key].id
+    public_ip_address_id = azurerm_public_ip.bastion[each.key].id
   }
   
   tags = var.tags
   
-  depends_on = [module.hub_networks, azurerm_public_ip.bastion_pip]
+  depends_on = [module.hub_networks, azurerm_public_ip.bastion]
 }
 
-resource "azurerm_resource_group" "dns_rg" {
+resource "azurerm_resource_group" "dns" {
   for_each = {
-    for k, v in var.hub_virtual_networks : k => v.private_dns_zones
-    if lookup(v, "private_dns_zones", null) != null && 
-       lookup(v.private_dns_zones, "resource_group_creation_enabled", false) == true
+    for k, v in var.hub_virtual_networks : k => v
+    if try(v.private_dns_zones, null) != null && 
+       try(v.private_dns_zones.resource_group_creation_enabled, false) == true
   }
   
-  name     = each.value.resource_group_name
-  location = var.hub_virtual_networks[each.key].hub_virtual_network.location
+  name     = each.value.private_dns_zones.resource_group_name
+  location = each.value.hub_virtual_network.location
   tags     = var.tags
 }
 
@@ -206,7 +208,7 @@ module "private_dns_zones" {
   
   tags = var.tags
   
-  depends_on = [module.hub_networks]
+  depends_on = [module.hub_networks, azurerm_resource_group.dns]
 }
 
 
